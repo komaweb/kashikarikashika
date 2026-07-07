@@ -1,3 +1,4 @@
+import { createButton } from "./components/button.js";
 import { createCard } from "./components/card.js";
 import { settings } from "../settings.js";
 import {
@@ -107,26 +108,33 @@ if(item.deleted){
 
     if(!item.deleted){
 
-        const button = document.createElement("button");
+const button = createButton({
 
-        button.className =
-            "button button-danger delete-button";
+    text:"取り消す",
 
-        button.textContent = "取り消す";
+    classes:[
 
-        button.onclick = ()=>{
+        "button-danger",
 
-            if(confirm(
-                "この支払いを取り消しますか？\n\n取り消した支払いは履歴に残ります。"
-            )){
+        "delete-button"
 
-                onDelete(item.id);
+    ],
 
-            }
+    onClick:()=>{
 
-        };
+        if(confirm(
+            "この支払いを取り消しますか？\n\n取り消した支払いは履歴に残ります。"
+        )){
 
-        card.appendChild(button);
+            onDelete(item.id);
+
+        }
+
+    }
+
+});
+
+card.appendChild(button);
 
     }
 
