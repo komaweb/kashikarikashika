@@ -1,3 +1,4 @@
+import { createCard } from "./components/card.js";
 import { settings } from "../settings.js";
 import {
     formatDate,
@@ -11,15 +12,13 @@ export function createHistoryCard(item, onDelete){
             ? settings.self
             : settings.partner;
 
-    const card = document.createElement("div");
+    const card = createCard("history-card");
 
-    card.className = "card history-card";
+if(item.deleted){
 
-    if(item.deleted){
+    card.classList.add("history-card-deleted");
 
-        card.classList.add("history-card-deleted");
-
-    }
+}
 
     let html = `
 
