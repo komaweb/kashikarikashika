@@ -11,19 +11,19 @@ export async function openMoneyPage(){
 
         "money",
 
-        ()=>{
+        initializeMoneyPage
 
-            refreshMoneyPage();
+    );
 
-            initializeButtons(
+}
 
-                refreshMoneyPage
+export async function openHistoryPage(){
 
-            );
+    await showPage(
 
-            initializeMoneyNavigation();
+        "history",
 
-        }
+        initializeHistoryPage
 
     );
 
@@ -35,19 +35,41 @@ export async function openSettingsPage(){
 
         "settings",
 
-        ()=>{
-
-            initializeSettingsView(
-
-                refreshMoneyPage
-
-            );
-
-            initializeSettingsNavigation();
-
-        }
+        initializeSettingsPage
 
     );
+
+}
+
+function initializeMoneyPage(){
+
+    refreshMoneyPage();
+
+    initializeButtons(
+
+        refreshMoneyPage
+
+    );
+
+    initializeMoneyNavigation();
+
+}
+
+function initializeHistoryPage(){
+
+    initializeHistoryNavigation();
+
+}
+
+function initializeSettingsPage(){
+
+    initializeSettingsView(
+
+        refreshMoneyPage
+
+    );
+
+    initializeSettingsNavigation();
 
 }
 
@@ -65,40 +87,114 @@ function refreshMoneyPage(){
 
 function initializeMoneyNavigation(){
 
-    const settingsTab =
+    bindNavigation({
 
-        document.getElementById(
+        history:true,
 
-            "settingsTab"
+        settings:true
 
-        );
+    });
 
-    settingsTab.addEventListener(
+}
 
-        "click",
+function initializeHistoryNavigation(){
 
-        openSettingsPage
+    bindNavigation({
 
-    );
+        money:true,
+
+        settings:true
+
+    });
 
 }
 
 function initializeSettingsNavigation(){
 
-    const moneyTab =
+    bindNavigation({
 
-        document.getElementById(
+        money:true,
+
+        history:true
+
+    });
+
+}
+
+function bindNavigation({
+
+    money=false,
+
+    history=false,
+
+    settings=false
+
+}){
+
+    if(money){
+
+        const button = document.getElementById(
 
             "moneyTab"
 
         );
 
-    moneyTab.addEventListener(
+        if(button){
 
-        "click",
+            button.addEventListener(
 
-        openMoneyPage
+                "click",
 
-    );
+                openMoneyPage
+
+            );
+
+        }
+
+    }
+
+    if(history){
+
+        const button = document.getElementById(
+
+            "historyTab"
+
+        );
+
+        if(button){
+
+            button.addEventListener(
+
+                "click",
+
+                openHistoryPage
+
+            );
+
+        }
+
+    }
+
+    if(settings){
+
+        const button = document.getElementById(
+
+            "settingsTab"
+
+        );
+
+        if(button){
+
+            button.addEventListener(
+
+                "click",
+
+                openSettingsPage
+
+            );
+
+        }
+
+    }
 
 }
