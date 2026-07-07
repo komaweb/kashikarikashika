@@ -1,0 +1,113 @@
+<header>
+
+    <h1>
+
+        カシカリカシカ
+
+    </h1>
+
+</header>
+
+<main>
+
+    <!-- 残高 -->
+
+    <section class="balance-card">
+
+        <p class="balance-label">
+
+            現在の貸し借り
+
+        </p>
+
+        <h2 id="balanceText">
+
+            貸し借りなし！
+
+        </h2>
+
+        <p id="balanceAmount">
+
+            ￥0
+
+        </p>
+
+    </section>
+
+    <!-- 入力 -->
+
+    <section class="input-card">
+
+        <div class="field">
+
+            <label>
+
+                タイトル（任意）
+
+            </label>
+
+            <input
+                id="titleInput"
+                type="text"
+                placeholder="ラーメン">
+
+        </div>
+
+        <div class="field">
+
+            <label>
+
+                金額
+
+            </label>
+
+            <input
+                id="amountInput"
+                type="number"
+                placeholder="520">
+
+        </div>
+
+        <div class="button-row">
+
+            <button id="selfButton">
+
+                😳 自分が払った
+
+            </button>
+
+            <button id="partnerButton">
+
+                🐱 相手が払った
+
+            </button>
+
+        </div>
+
+    </section>
+
+    <section class="settlement-card">
+
+        <button id="settlementButton">
+
+            精算する
+
+        </button>
+
+    </section>
+
+    <section class="history-section">
+
+        <h2>
+
+            履歴
+
+        </h2>
+
+        <div id="historyList">
+
+        </div>
+
+    </section>
+
+</main>
