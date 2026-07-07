@@ -1,15 +1,16 @@
 import { getHistory, removeHistory } from "../history.js";
+import { settings } from "../settings.js";
 import { formatDate, formatMoney } from "./format.js";
 
-export function renderHistory(settings, refresh){
+export function renderHistory(refresh){
 
-    const list = document.getElementById("historyList");
+    const historyList = document.getElementById("historyList");
 
     const history = getHistory();
 
     if(history.length === 0){
 
-        list.innerHTML = `
+        historyList.innerHTML = `
             <p class="empty">
                 履歴はまだありません
             </p>
@@ -19,7 +20,7 @@ export function renderHistory(settings, refresh){
 
     }
 
-    list.innerHTML = "";
+    historyList.innerHTML = "";
 
     history.forEach(item=>{
 
@@ -50,20 +51,22 @@ export function renderHistory(settings, refresh){
 
             <div class="history-detail">
                 ${person.icon}
-                ${person.name}が
+                ${person.name}が支払いました
+            </div>
+
+            <div class="history-money">
                 ${formatMoney(item.amount)}
-                支払いました
             </div>
 
         `;
 
-        const button = document.createElement("button");
+        const deleteButton = document.createElement("button");
 
-        button.className = "delete-button";
+        deleteButton.className = "delete-button";
 
-        button.textContent = "削除";
+        deleteButton.textContent = "削除";
 
-        button.onclick = ()=>{
+        deleteButton.onclick = ()=>{
 
             if(!confirm("この履歴を削除しますか？")){
 
@@ -77,9 +80,9 @@ export function renderHistory(settings, refresh){
 
         };
 
-        card.appendChild(button);
+        card.appendChild(deleteButton);
 
-        list.appendChild(card);
+        historyList.appendChild(card);
 
     });
 
