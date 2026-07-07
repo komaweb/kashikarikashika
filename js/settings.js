@@ -1,71 +1,69 @@
-export const settings = {
+import { load, save } from "./storage.js";
 
-    self: {
+const STORAGE_NAME = "settings";
 
-        name: "自分",
+const defaultSettings = {
 
-        icon: "😳",
+    self:{
 
-        color: "#4F8EF7"
+        name:"自分",
+
+        icon:"😳",
+
+        color:"#4F8EF7"
 
     },
 
-    partner: {
+    partner:{
 
-        name: "相手",
+        name:"相手",
 
-        icon: "🐱",
+        icon:"🐱",
 
-        color: "#FF6B81"
+        color:"#FF6B81"
 
     }
 
 };
 
-export function getSelf() {
+export const settings = load(
 
-    return settings.self;
+    STORAGE_NAME,
 
-}
+    structuredClone(defaultSettings)
 
-export function getPartner() {
+);
 
-    return settings.partner;
+export function saveSettings(){
 
-}
+    save(
 
-export function setSelfName(name) {
+        STORAGE_NAME,
 
-    settings.self.name = name;
+        settings
 
-}
-
-export function setPartnerName(name) {
-
-    settings.partner.name = name;
+    );
 
 }
 
-export function setSelfIcon(icon) {
+export function updateSettings(newSettings){
 
-    settings.self.icon = icon;
+    Object.assign(
 
-}
+        settings.self,
 
-export function setPartnerIcon(icon) {
+        newSettings.self ?? {}
 
-    settings.partner.icon = icon;
+    );
 
-}
+    Object.assign(
 
-export function setSelfColor(color) {
+        settings.partner,
 
-    settings.self.color = color;
+        newSettings.partner ?? {}
 
-}
+    );
 
-export function setPartnerColor(color) {
-
-    settings.partner.color = color;
+    saveSettings();
 
 }
