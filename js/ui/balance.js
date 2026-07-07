@@ -1,4 +1,4 @@
-import { getHistory } from "../history.js";
+import { getHistory } from "../historyStore.js";
 import {
     calculateBalance,
     getBalanceStatus
