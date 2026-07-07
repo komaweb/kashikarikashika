@@ -1,29 +1,13 @@
-import { loadPage } from "./ui/navigation.js";
+import { openMoneyPage } from "./pages.js";
 
-import { updateBalance } from "./ui/balance.js";
-import { renderHistory } from "./ui/historyView.js";
-import { initializeButtons } from "./ui/buttons.js";
+document.addEventListener(
 
-async function initializeMoneyPage(){
+    "DOMContentLoaded",
 
-    await loadPage("money");
+    ()=>{
 
-    refresh();
+        openMoneyPage();
 
-    initializeButtons(refresh);
+    }
 
-}
-
-function refresh(){
-
-    updateBalance();
-
-    renderHistory(refresh);
-
-}
-
-document.addEventListener("DOMContentLoaded",()=>{
-
-    initializeMoneyPage();
-
-});
+);
