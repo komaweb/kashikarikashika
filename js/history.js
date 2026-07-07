@@ -1,12 +1,20 @@
-import { saveHistory, loadHistory } from "./storage.js";
+import { load, save } from "./storage.js";
 
-export const historyData = loadHistory();
+const STORAGE_NAME = "history";
 
-export function addHistory(data){
+const historyData = load(STORAGE_NAME, []);
 
-    historyData.unshift(data);
+export function getHistory(){
 
-    saveHistory(historyData);
+    return historyData;
+
+}
+
+export function addHistory(history){
+
+    historyData.unshift(history);
+
+    save(STORAGE_NAME, historyData);
 
 }
 
@@ -14,20 +22,22 @@ export function removeHistory(id){
 
     const index = historyData.findIndex(item=>item.id===id);
 
-    if(index===-1){
+    if(index === -1){
 
         return;
 
     }
 
-    historyData.splice(index,1);
+    historyData.splice(index, 1);
 
-    saveHistory(historyData);
+    save(STORAGE_NAME, historyData);
 
 }
 
-export function getHistory(){
+export function clearHistory(){
 
-    return historyData;
+    historyData.length = 0;
+
+    save(STORAGE_NAME, historyData);
 
 }
