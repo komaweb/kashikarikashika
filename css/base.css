@@ -1,0 +1,203 @@
+/*==================================================
+    Theme
+==================================================*/
+
+:root{
+
+    --bg:#f4f5f7;
+
+    --card:#ffffff;
+
+    --text:#1f2937;
+
+    --sub:#6b7280;
+
+    --border:#e5e7eb;
+
+    --shadow:0 6px 18px rgba(15,23,42,.08);
+
+    --self:#4F8EF7;
+
+    --partner:#FF6B81;
+
+    --radius:20px;
+
+    --radius-small:12px;
+
+    --transition:.25s;
+
+    --header-height:72px;
+
+    --max-width:520px;
+
+}
+
+*{
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+body{
+
+    background:var(--bg);
+
+    color:var(--text);
+
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Helvetica Neue",
+        sans-serif;
+
+}
+
+.app{
+
+    width:min(100%,var(--max-width));
+
+    margin:auto;
+
+    padding:24px 18px 80px;
+
+}
+
+header{
+
+    height:var(--header-height);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+}
+
+header h1{
+
+    font-size:30px;
+
+    font-weight:800;
+
+    letter-spacing:.05em;
+
+}
+
+/*==========================
+    Card
+==========================*/
+
+.card,
+
+.balance-card,
+
+.input-card,
+
+.settlement-card,
+
+.history-card{
+
+    background:var(--card);
+
+    border-radius:var(--radius);
+
+    border:1px solid var(--border);
+
+    box-shadow:var(--shadow);
+
+    padding:22px;
+
+}
+
+/*==========================
+    Form
+==========================*/
+
+.field{
+
+    margin-bottom:18px;
+
+}
+
+label{
+
+    display:block;
+
+    font-size:14px;
+
+    color:var(--sub);
+
+    margin-bottom:8px;
+
+}
+
+input{
+
+    width:100%;
+
+    padding:14px 16px;
+
+    border-radius:14px;
+
+    border:1px solid var(--border);
+
+    font-size:18px;
+
+    background:white;
+
+    transition:var(--transition);
+
+}
+
+input:focus{
+
+    outline:none;
+
+    border-color:var(--self);
+
+    box-shadow:0 0 0 4px rgba(79,142,247,.15);
+
+}
+
+/*==========================
+    Button
+==========================*/
+
+button{
+
+    border:none;
+
+    cursor:pointer;
+
+    transition:var(--transition);
+
+}
+
+.button{
+
+    padding:16px;
+
+    border-radius:16px;
+
+    font-size:17px;
+
+    font-weight:700;
+
+}
+
+.button:hover{
+
+    transform:translateY(-2px);
+
+}
+
+.button:active{
+
+    transform:scale(.98);
+
+}
