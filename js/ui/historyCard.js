@@ -1,12 +1,16 @@
-import { createButton } from "./components/button.js";
-import { createCard } from "./components/card.js";
 import { settings } from "../settings.js";
-import {
-    formatDate,
-    formatMoney
-} from "./format.js";
 
-export function createHistoryCard(item, onDelete){
+import { createCard } from "./components/card.js";
+import { createButton } from "./components/button.js";
+import { createText } from "./components/text.js";
+
+import { createPersonLabel } from "./components/personLabel.js";
+import { createMoney } from "./components/money.js";
+import { createHistoryDate } from "./components/historyDate.js";
+
+import { formatDate } from "./format.js";
+
+export function createHistoryCard(item,onDelete){
 
     const person =
         item.payer === "self"
@@ -15,126 +19,124 @@ export function createHistoryCard(item, onDelete){
 
     const card = createCard("history-card");
 
-if(item.deleted){
+    if(item.deleted){
 
-    card.classList.add("history-card-deleted");
+        card.classList.add("history-card-deleted");
 
-}
+    }
 
-    let html = `
+    card.appendChild(
 
-        <div class="history-date">
+        createHistoryDate(item.createdAt)
 
-            ${formatDate(item.createdAt)}
-
-        </div>
-
-    `;
+    );
 
     if(item.deleted){
 
-        html += `
+        card.appendChild(
 
-            <div class="history-title deleted-title">
+            createText({
 
-                🗑 取り消し済み
+                text:"🗑 取り消し済み",
 
-            </div>
+                classes:[
+                    "history-title",
+                    "deleted-title"
+                ]
 
-        `;
+            })
+
+        );
 
     }else if(item.title){
 
-        html += `
+        card.appendChild(
 
-            <div class="history-title">
+            createText({
 
-                ${item.title}
+                text:item.title,
 
-            </div>
+                classes:["history-title"]
 
-        `;
+            })
 
-    }
-
-    if(item.title && item.deleted){
-
-        html += `
-
-            <div class="history-subtitle">
-
-                ${item.title}
-
-            </div>
-
-        `;
+        );
 
     }
 
-    html += `
+    if(item.deleted && item.title){
 
-        <div class="history-detail">
+        card.appendChild(
 
-            ${person.icon}
-            ${person.name}が支払いました
+            createText({
 
-        </div>
+                text:item.title,
 
-        <div class="history-money">
+                classes:["history-subtitle"]
 
-            ${formatMoney(item.amount)}
+            })
 
-        </div>
+        );
 
-    `;
+    }
+
+    card.appendChild(
+
+        createPersonLabel(person)
+
+    );
+
+    card.appendChild(
+
+        createMoney(item.amount)
+
+    );
 
     if(item.deleted){
 
-        html += `
+        card.appendChild(
 
-            <div class="history-deleted-date">
+            createText({
 
-                取り消し日時
+                text:`取り消し日時 ${formatDate(item.deletedAt)}`,
 
-                ${formatDate(item.deletedAt)}
+                classes:["history-deleted-date"]
 
-            </div>
+            })
 
-        `;
+        );
 
-    }
+    }else{
 
-    card.innerHTML = html;
+        card.appendChild(
 
-    if(!item.deleted){
+            createButton({
 
-const button = createButton({
+                text:"取り消す",
 
-    text:"取り消す",
+                classes:[
 
-    classes:[
+                    "button-danger",
 
-        "button-danger",
+                    "delete-button"
 
-        "delete-button"
+                ],
 
-    ],
+                onClick:()=>{
 
-    onClick:()=>{
+                    if(confirm(
+                        "この支払いを取り消しますか？\n\n取り消した支払いは履歴に残ります。"
+                    )){
 
-        if(confirm(
-            "この支払いを取り消しますか？\n\n取り消した支払いは履歴に残ります。"
-        )){
+                        onDelete(item.id);
 
-            onDelete(item.id);
+                    }
 
-        }
+                }
 
-    }
+            })
 
-});
-
-card.appendChild(button);
+        );
 
     }
 
