@@ -4,20 +4,50 @@ export function calculateBalance(history){
 
     history.forEach(item=>{
 
-        if(item.type !== "payment") return;
+        switch(item.type){
 
-        if(item.payer === "self"){
+            case "payment":
 
-            balance += item.amount;
+                if(item.payer === "self"){
 
-        }else{
+                    balance += item.amount;
 
-            balance -= item.amount;
+                }else{
+
+                    balance -= item.amount;
+
+                }
+
+                break;
+
+            case "settlement":
+
+                balance = 0;
+
+                break;
 
         }
 
     });
 
     return balance;
+
+}
+
+export function getBalanceStatus(balance){
+
+    if(balance > 0){
+
+        return "self";
+
+    }
+
+    if(balance < 0){
+
+        return "partner";
+
+    }
+
+    return "none";
 
 }
