@@ -21,6 +21,8 @@ export async function openMoneyPage(){
 
             );
 
+            initializeMoneyNavigation();
+
         }
 
     );
@@ -41,6 +43,8 @@ export async function openSettingsPage(){
 
             );
 
+            initializeSettingsNavigation();
+
         }
 
     );
@@ -54,6 +58,46 @@ function refreshMoneyPage(){
     renderHistory(
 
         refreshMoneyPage
+
+    );
+
+}
+
+function initializeMoneyNavigation(){
+
+    const settingsTab =
+
+        document.getElementById(
+
+            "settingsTab"
+
+        );
+
+    settingsTab.addEventListener(
+
+        "click",
+
+        openSettingsPage
+
+    );
+
+}
+
+function initializeSettingsNavigation(){
+
+    const moneyTab =
+
+        document.getElementById(
+
+            "moneyTab"
+
+        );
+
+    moneyTab.addEventListener(
+
+        "click",
+
+        openMoneyPage
 
     );
 
