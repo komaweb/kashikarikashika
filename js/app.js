@@ -1,12 +1,19 @@
-import {
-    initializeUI,
-    bindEvents
-} from "./ui.js";
+import { updateBalance } from "./ui/balance.js";
+import { renderHistory } from "./ui/history.js";
+import { initializeButtons } from "./ui/buttons.js";
 
-document.addEventListener("DOMContentLoaded", () => {
+function refresh(){
 
-    initializeUI();
+    updateBalance();
 
-    bindEvents();
+    renderHistory(refresh);
+
+}
+
+document.addEventListener("DOMContentLoaded",()=>{
+
+    refresh();
+
+    initializeButtons(refresh);
 
 });
