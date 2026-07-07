@@ -1,172 +1,49 @@
-import {
-    getHistory,
-    deleteHistory
-} from "../history.js";
+import { load, save } from "./storage.js";
 
-import { settings } from "../settings.js";
+const STORAGE_NAME = "history";
 
-import {
-    formatDate,
-    formatMoney
-} from "./format.js";
+const historyData = load(STORAGE_NAME, []);
 
-export function renderHistory(refresh){
+export function getHistory(){
 
-    const historyList =
-        document.getElementById("historyList");
+    return historyData;
 
-    const history = getHistory();
+}
 
-    if(history.length === 0){
+export function addHistory(history){
 
-        historyList.innerHTML = `
-            <p class="empty">
-                履歴はまだありません
-            </p>
-        `;
+    history.deleted = false;
+
+    history.deletedAt = null;
+
+    historyData.unshift(history);
+
+    save(STORAGE_NAME, historyData);
+
+}
+
+export function deleteHistory(id){
+
+    const item = historyData.find(item=>item.id === id);
+
+    if(!item){
 
         return;
 
     }
 
-    historyList.innerHTML = "";
+    item.deleted = true;
 
-    history.forEach(item=>{
+    item.deletedAt = new Date().toISOString();
 
-        const person =
-            item.payer === "self"
-                ? settings.self
-                : settings.partner;
+    save(STORAGE_NAME, historyData);
 
-        const card =
-            document.createElement("div");
+}
 
-        card.className = "history-card";
+export function clearHistory(){
 
-        if(item.deleted){
+    historyData.length = 0;
 
-            card.classList.add("history-card-deleted");
-
-        }
-
-        let html = `
-
-            <div class="history-date">
-
-                ${formatDate(item.createdAt)}
-
-            </div>
-
-        `;
-
-        if(item.deleted){
-
-            html += `
-
-                <div class="history-title deleted-title">
-
-                    🗑 取り消し済み
-
-                </div>
-
-            `;
-
-        }else if(item.title){
-
-            html += `
-
-                <div class="history-title">
-
-                    ${item.title}
-
-                </div>
-
-            `;
-
-        }
-
-        if(item.title && item.deleted){
-
-            html += `
-
-                <div class="history-subtitle">
-
-                    ${item.title}
-
-                </div>
-
-            `;
-
-        }
-
-        html += `
-
-            <div class="history-detail">
-
-                ${person.icon}
-                ${person.name}が支払いました
-
-            </div>
-
-            <div class="history-money">
-
-                ${formatMoney(item.amount)}
-
-            </div>
-
-        `;
-
-        if(item.deleted){
-
-            html += `
-
-                <div class="history-deleted-date">
-
-                    取り消し日時
-
-                    ${formatDate(item.deletedAt)}
-
-                </div>
-
-            `;
-
-        }
-
-        card.innerHTML = html;
-
-        if(!item.deleted){
-
-            const button =
-                document.createElement("button");
-
-            button.className =
-                "delete-button";
-
-            button.textContent =
-                "取り消す";
-
-            button.onclick = ()=>{
-
-                if(!confirm(
-                    "この支払いを取り消しますか？\n\n取り消した支払いは履歴に残ります。"
-                )){
-
-                    return;
-
-                }
-
-                deleteHistory(item.id);
-
-                refresh();
-
-            };
-
-            card.appendChild(button);
-
-        }
-
-        historyList.appendChild(card);
-
-    });
+    save(STORAGE_NAME, historyData);
 
 }
