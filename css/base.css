@@ -20,6 +20,10 @@
 
     --partner:#FF6B81;
 
+    --danger:#ef4444;
+
+    --warning:#f59e0b;
+
     --radius:20px;
 
     --radius-small:12px;
@@ -31,6 +35,10 @@
     --max-width:520px;
 
 }
+
+/*==================================================
+    Reset
+==================================================*/
 
 *{
 
@@ -66,6 +74,10 @@ body{
 
 }
 
+/*==================================================
+    Header
+==================================================*/
+
 header{
 
     height:var(--header-height);
@@ -88,19 +100,11 @@ header h1{
 
 }
 
-/*==========================
+/*==================================================
     Card
-==========================*/
+==================================================*/
 
-.card,
-
-.balance-card,
-
-.input-card,
-
-.settlement-card,
-
-.history-card{
+.card{
 
     background:var(--card);
 
@@ -114,11 +118,11 @@ header h1{
 
 }
 
-/*==========================
+/*==================================================
     Form
-==========================*/
+==================================================*/
 
-.field{
+.form-group{
 
     margin-bottom:18px;
 
@@ -128,11 +132,11 @@ label{
 
     display:block;
 
+    margin-bottom:8px;
+
     font-size:14px;
 
     color:var(--sub);
-
-    margin-bottom:8px;
 
 }
 
@@ -142,13 +146,13 @@ input{
 
     padding:14px 16px;
 
-    border-radius:14px;
-
     border:1px solid var(--border);
 
-    font-size:18px;
+    border-radius:14px;
 
     background:white;
+
+    font-size:18px;
 
     transition:var(--transition);
 
@@ -164,9 +168,21 @@ input:focus{
 
 }
 
-/*==========================
+/*==================================================
     Button
-==========================*/
+==================================================*/
+
+button{
+
+    border:none;
+
+    background:none;
+
+    font:inherit;
+
+    cursor:pointer;
+
+}
 
 .button{
 
@@ -174,19 +190,15 @@ input:focus{
 
     padding:16px;
 
-    border:none;
-
     border-radius:16px;
+
+    color:white;
 
     font-size:17px;
 
     font-weight:700;
 
-    cursor:pointer;
-
     transition:var(--transition);
-
-    color:white;
 
 }
 
@@ -202,3 +214,40 @@ input:focus{
 
 }
 
+.button-self{
+
+    background:var(--self);
+
+}
+
+.button-partner{
+
+    background:var(--partner);
+
+}
+
+.button-warning{
+
+    background:var(--warning);
+
+}
+
+.button-danger{
+
+    background:var(--danger);
+
+}
+
+/*==================================================
+    Responsive
+==================================================*/
+
+@media (max-width:420px){
+
+    .app{
+
+        padding:20px 14px 80px;
+
+    }
+
+}
