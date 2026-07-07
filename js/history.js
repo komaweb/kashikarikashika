@@ -12,23 +12,29 @@ export function getHistory(){
 
 export function addHistory(history){
 
+    history.deleted = false;
+
+    history.deletedAt = null;
+
     historyData.unshift(history);
 
     save(STORAGE_NAME, historyData);
 
 }
 
-export function removeHistory(id){
+export function deleteHistory(id){
 
-    const index = historyData.findIndex(item=>item.id===id);
+    const item = historyData.find(item=>item.id===id);
 
-    if(index === -1){
+    if(!item){
 
         return;
 
     }
 
-    historyData.splice(index, 1);
+    item.deleted = true;
+
+    item.deletedAt = new Date();
 
     save(STORAGE_NAME, historyData);
 
