@@ -2,39 +2,34 @@ import { addHistory } from "../history.js";
 
 export function initializeButtons(refresh){
 
-    document
-        .getElementById("selfButton")
-        .onclick = ()=>{
+    const selfButton = document.getElementById("selfButton");
+    const partnerButton = document.getElementById("partnerButton");
 
-            registerPayment("self", refresh);
+    selfButton.addEventListener("click",()=>{
 
-        };
+        registerPayment("self", refresh);
 
-    document
-        .getElementById("partnerButton")
-        .onclick = ()=>{
+    });
 
-            registerPayment("partner", refresh);
+    partnerButton.addEventListener("click",()=>{
 
-        };
+        registerPayment("partner", refresh);
+
+    });
 
 }
 
 function registerPayment(payer, refresh){
 
-    const titleInput =
-        document.getElementById("titleInput");
-
-    const amountInput =
-        document.getElementById("amountInput");
+    const titleInput = document.getElementById("titleInput");
+    const amountInput = document.getElementById("amountInput");
 
     const title = titleInput.value.trim();
-
     const amount = Number(amountInput.value);
 
     if(amount <= 0){
 
-        alert("金額を入力してください");
+        alert("金額を入力してください。");
 
         return;
 
@@ -57,7 +52,6 @@ function registerPayment(payer, refresh){
     });
 
     titleInput.value = "";
-
     amountInput.value = "";
 
     refresh();
