@@ -1,13 +1,31 @@
-export async function loadPage(page){
+const PAGE_ROOT = document.getElementById("app");
 
-    const app = document.getElementById("app");
+let currentPage = "";
 
-    const response = await fetch(
+export async function showPage(page, onLoaded = null){
 
-        `pages/${page}.html`
+    if(currentPage === page){
 
-    );
+        return;
 
-    app.innerHTML = await response.text();
+    }
+
+    currentPage = page;
+
+    const response = await fetch(`pages/${page}.html`);
+
+    PAGE_ROOT.innerHTML = await response.text();
+
+    if(onLoaded){
+
+        onLoaded();
+
+    }
+
+}
+
+export function getCurrentPage(){
+
+    return currentPage;
 
 }
