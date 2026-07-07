@@ -10,9 +10,11 @@
 
 <main>
 
-    <!-- 残高 -->
+    <!--==============================
+        Balance
+    ==============================-->
 
-    <section class="balance-card">
+    <section class="card balance-card">
 
         <p class="balance-label">
 
@@ -34,13 +36,15 @@
 
     </section>
 
-    <!-- 入力 -->
+    <!--==============================
+        Input
+    ==============================-->
 
-    <section class="input-card">
+    <section class="card input-card">
 
-        <div class="field">
+        <div class="form-group">
 
-            <label>
+            <label for="titleInput">
 
                 タイトル（任意）
 
@@ -53,9 +57,9 @@
 
         </div>
 
-        <div class="field">
+        <div class="form-group">
 
-            <label>
+            <label for="amountInput">
 
                 金額
 
@@ -64,6 +68,7 @@
             <input
                 id="amountInput"
                 type="number"
+                inputmode="numeric"
                 placeholder="520">
 
         </div>
@@ -71,30 +76,44 @@
         <div class="button-row">
 
             <button
-    id="selfButton"
-    class="button button-self">
+                id="selfButton"
+                class="button button-self">
 
-    😳 自分が払った
+                😳 自分が払った
 
-</button>
+            </button>
 
-<button
-    id="partnerButton"
-    class="button button-partner">
+            <button
+                id="partnerButton"
+                class="button button-partner">
 
-    🐱 相手が払った
+                🐱 相手が払った
 
-</button>
+            </button>
 
-<button
-    id="settlementButton"
-    class="button button-settlement">
-
-    精算する
-
-</button>
+        </div>
 
     </section>
+
+    <!--==============================
+        Settlement
+    ==============================-->
+
+    <section class="card settlement-card">
+
+        <button
+            id="settlementButton"
+            class="button button-warning">
+
+            精算する
+
+        </button>
+
+    </section>
+
+    <!--==============================
+        History
+    ==============================-->
 
     <section class="history-section">
 
