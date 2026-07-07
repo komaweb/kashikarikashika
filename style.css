@@ -363,3 +363,27 @@ button{
     }
 
 }
+
+.delete-button{
+
+    margin-top:16px;
+
+    width:100%;
+
+    padding:10px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#ef4444;
+
+    color:white;
+
+    font-size:15px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+}
