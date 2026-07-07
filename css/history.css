@@ -1,0 +1,113 @@
+.history-section h2{
+
+    font-size:22px;
+
+    margin-bottom:16px;
+
+}
+
+.history-card{
+
+    margin-bottom:12px;
+
+}
+
+.history-date{
+
+    color:var(--sub);
+
+    font-size:13px;
+
+}
+
+.history-title{
+
+    margin:8px 0;
+
+    font-size:20px;
+
+    font-weight:700;
+
+}
+
+.history-detail{
+
+    font-size:16px;
+
+}
+
+.history-money{
+
+    margin-top:12px;
+
+    font-size:26px;
+
+    font-weight:700;
+
+}
+
+.empty{
+
+    text-align:center;
+
+    color:var(--sub);
+
+    padding:30px;
+
+}
+
+.delete-button{
+
+    margin-top:16px;
+
+    width:100%;
+
+    padding:10px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#ef4444;
+
+    color:white;
+
+    font-size:15px;
+
+    font-weight:700;
+
+}
+
+.history-card-deleted{
+
+    opacity:.65;
+
+    background:#f3f4f6;
+
+}
+
+.deleted-title{
+
+    color:#ef4444;
+
+}
+
+.history-subtitle{
+
+    margin-top:6px;
+
+    color:var(--sub);
+
+    font-size:15px;
+
+}
+
+.history-deleted-date{
+
+    margin-top:12px;
+
+    color:var(--sub);
+
+    font-size:13px;
+
+}
