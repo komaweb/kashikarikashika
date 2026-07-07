@@ -387,3 +387,49 @@ button{
     cursor:pointer;
 
 }
+
+
+
+.history-card-deleted{
+
+    opacity:.65;
+
+    background:#f3f4f6;
+
+}
+
+.deleted-title{
+
+    color:#ef4444;
+
+}
+
+.history-subtitle{
+
+    margin-top:6px;
+
+    color:var(--sub);
+
+    font-size:15px;
+
+}
+
+.history-money{
+
+    margin-top:12px;
+
+    font-size:26px;
+
+    font-weight:700;
+
+}
+
+.history-deleted-date{
+
+    margin-top:12px;
+
+    color:var(--sub);
+
+    font-size:13px;
+
+}
