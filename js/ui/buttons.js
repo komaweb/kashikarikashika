@@ -1,4 +1,4 @@
-import { addHistory } from "../history.js";
+import { addHistory } from "../historyStore.js";
 
 export function initializeButtons(refresh){
 
