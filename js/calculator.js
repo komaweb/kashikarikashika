@@ -4,6 +4,12 @@ export function calculateBalance(history){
 
     history.forEach(item=>{
 
+        if(item.deleted){
+
+            return;
+
+        }
+
         switch(item.type){
 
             case "payment":
