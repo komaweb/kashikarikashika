@@ -1,36 +1,65 @@
-import { calculateBalance } from "../calculator.js";
 import { getHistory } from "../history.js";
+import {
+    calculateBalance,
+    getBalanceStatus
+} from "../calculator.js";
+import { settings } from "../settings.js";
 import { formatMoney } from "./format.js";
 
-export function updateBalance(settings){
+export function updateBalance(){
 
-    const balance = calculateBalance(getHistory());
+    const history = getHistory();
 
-    const text = document.getElementById("balanceText");
-    const amount = document.getElementById("balanceAmount");
+    const balance = calculateBalance(history);
 
-    if(balance === 0){
+    const status = getBalanceStatus(balance);
 
-        text.textContent = "貸し借りなし！";
-        amount.textContent = formatMoney(0);
+    const balanceText =
+        document.getElementById("balanceText");
 
-        return;
+    const balanceAmount =
+        document.getElementById("balanceAmount");
 
-    }
+    switch(status){
 
-    if(balance > 0){
+        case "self":
 
-        text.textContent =
-            `${settings.self.icon} ${settings.self.name}が貸しています`;
+            balanceText.textContent =
+                `${settings.self.icon} ${settings.self.name}が貸しています`;
 
-        amount.textContent = formatMoney(balance);
+            balanceText.style.color =
+                settings.self.color;
 
-    }else{
+            balanceAmount.textContent =
+                formatMoney(balance);
 
-        text.textContent =
-            `${settings.partner.icon} ${settings.partner.name}が貸しています`;
+            break;
 
-        amount.textContent = formatMoney(Math.abs(balance));
+        case "partner":
+
+            balanceText.textContent =
+                `${settings.partner.icon} ${settings.partner.name}が貸しています`;
+
+            balanceText.style.color =
+                settings.partner.color;
+
+            balanceAmount.textContent =
+                formatMoney(Math.abs(balance));
+
+            break;
+
+        default:
+
+            balanceText.textContent =
+                "貸し借りなし！";
+
+            balanceText.style.color =
+                "var(--sub)";
+
+            balanceAmount.textContent =
+                formatMoney(0);
+
+            break;
 
     }
 
