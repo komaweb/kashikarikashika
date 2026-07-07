@@ -168,25 +168,25 @@ input:focus{
     Button
 ==========================*/
 
-button{
-
-    border:none;
-
-    cursor:pointer;
-
-    transition:var(--transition);
-
-}
-
 .button{
 
+    width:100%;
+
     padding:16px;
+
+    border:none;
 
     border-radius:16px;
 
     font-size:17px;
 
     font-weight:700;
+
+    cursor:pointer;
+
+    transition:var(--transition);
+
+    color:white;
 
 }
 
@@ -201,3 +201,4 @@ button{
     transform:scale(.98);
 
 }
+
