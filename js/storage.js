@@ -1,21 +1,34 @@
-const HISTORY_KEY = "kashikarikashika-history";
+const PREFIX = "kashikarikashika";
 
-export function saveHistory(history){
+function getKey(name){
+
+    return `${PREFIX}-${name}`;
+
+}
+
+export function save(name, data){
 
     localStorage.setItem(
-        HISTORY_KEY,
-        JSON.stringify(history)
+
+        getKey(name),
+
+        JSON.stringify(data)
+
     );
 
 }
 
-export function loadHistory(){
+export function load(name, defaultValue = null){
 
-    const data = localStorage.getItem(HISTORY_KEY);
+    const data = localStorage.getItem(
 
-    if(!data){
+        getKey(name)
 
-        return [];
+    );
+
+    if(data === null){
+
+        return defaultValue;
 
     }
 
@@ -27,8 +40,32 @@ export function loadHistory(){
 
         console.error(error);
 
-        return [];
+        return defaultValue;
 
     }
+
+}
+
+export function remove(name){
+
+    localStorage.removeItem(
+
+        getKey(name)
+
+    );
+
+}
+
+export function clear(){
+
+    Object.keys(localStorage).forEach(key=>{
+
+        if(key.startsWith(PREFIX)){
+
+            localStorage.removeItem(key);
+
+        }
+
+    });
 
 }
