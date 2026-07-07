@@ -1,5 +1,5 @@
 import { updateBalance } from "./ui/balance.js";
-import { renderHistory } from "./ui/history.js";
+import { renderHistory } from "./ui/historyView.js";
 import { initializeButtons } from "./ui/buttons.js";
 
 function refresh(){
