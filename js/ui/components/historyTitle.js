@@ -6,7 +6,7 @@ export function createHistoryTitle(item){
 
         return createText({
 
-            text:"🗑 取り消し済み",
+            text:"取り消し済み",
 
             classes:[
 
