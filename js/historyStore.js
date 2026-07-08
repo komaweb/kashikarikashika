@@ -28,11 +28,21 @@ export function getActiveHistory(){
 
 export function getDeletedHistory(){
 
-    return historyData.filter(
+    return historyData
 
-        item=>item.deleted
+        .filter(
 
-    );
+            item=>item.deleted
+
+        )
+
+        .sort(
+
+            (a,b)=>
+
+                new Date(b.deletedAt)-new Date(a.deletedAt)
+
+        );
 
 }
 
