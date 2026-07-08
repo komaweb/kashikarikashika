@@ -1,52 +1,234 @@
 /*==================================================
-    Balance
+    Balance Card
 ==================================================*/
 
 .balance-card{
 
-    margin-bottom:18px;
+    transition:var(--transition);
 
     text-align:center;
 
 }
 
+.balance-self{
+
+    background:var(--self-color);
+
+    color:#fff;
+
+}
+
+.balance-partner{
+
+    background:var(--partner-color);
+
+    color:#fff;
+
+}
+
+.balance-none{
+
+    background:#fff;
+
+    color:var(--text);
+
+}
+
 .balance-label{
 
-    margin-bottom:10px;
+    margin-bottom:14px;
 
-    color:var(--sub);
+    opacity:.9;
 
-    font-size:14px;
+    font-size:15px;
+
+    font-weight:600;
 
 }
 
 #balanceText{
 
-    font-size:28px;
+    display:flex;
 
-    line-height:1.4;
+    justify-content:center;
+
+    margin-top:10px;
 
 }
 
 #balanceAmount{
 
-    margin-top:18px;
+    margin-top:24px;
 
-    font-size:46px;
+    font-size:48px;
 
     font-weight:800;
+
+    line-height:1;
+
+}
+
+.balance-card .button-settlement{
+
+    margin-top:28px;
+
+    background:#fff;
+
+    color:#222;
+
+}
+
+.balance-card .button-settlement:disabled{
+
+    background:#ececec;
+
+    color:#999;
 
 }
 
 /*==================================================
-    Input
+    Balance Person
 ==================================================*/
 
-.input-card{
+.balance-person{
 
-    margin-bottom:18px;
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:16px;
 
 }
+
+.balance-person-label{
+
+    font-size:22px;
+
+    font-weight:700;
+
+    text-align:center;
+
+}
+
+/*==================================================
+    Person View
+==================================================*/
+
+.person-view{
+
+    display:flex;
+
+}
+
+.person-row{
+
+    flex-direction:row;
+
+    align-items:center;
+
+    justify-content:flex-start;
+
+    gap:10px;
+
+}
+
+.person-column{
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:10px;
+
+    text-align:center;
+
+}
+
+.person-icon{
+
+    width:100%;
+
+    height:100%;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    flex-shrink:0;
+
+}
+
+.person-placeholder{
+
+    border:2px solid rgba(255,255,255,.35);
+
+}
+
+.person-name{
+
+    font-weight:700;
+
+    line-height:1.2;
+
+}
+
+/* ---------- Small ---------- */
+
+.person-small .person-icon{
+
+    width:30px;
+
+    height:30px;
+
+}
+
+.person-small .person-name{
+
+    font-size:18px;
+
+}
+
+/* ---------- Medium ---------- */
+
+.person-medium .person-icon{
+
+    width:58px;
+
+    height:58px;
+
+}
+
+.person-medium .person-name{
+
+    font-size:24px;
+
+}
+
+/* ---------- Large ---------- */
+
+.person-large .person-icon{
+
+    width:82px;
+
+    height:82px;
+
+}
+
+.person-large .person-name{
+
+    font-size:34px;
+
+}
+
+/*==================================================
+    Payment Button
+==================================================*/
 
 .button-row{
 
@@ -54,36 +236,38 @@
 
     grid-template-columns:1fr 1fr;
 
-    gap:12px;
+    gap:16px;
 
 }
 
-/*==================================================
-    Settlement
-==================================================*/
+.button-self,
 
-.settlement-card{
+.button-partner{
 
-    margin-bottom:24px;
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:10px;
+
+    min-height:180px;
 
 }
 
-.button-warning{
+.payment-button-label{
 
-    padding:18px;
+    margin-top:6px;
 
-    border-radius:18px;
+    font-size:18px;
 
-}
+    font-weight:600;
 
-/*==================================================
-    History
-==================================================*/
+    line-height:1.2;
 
-.history-section h2{
-
-    margin-bottom:16px;
-
-    font-size:22px;
+    text-align:center;
 
 }
