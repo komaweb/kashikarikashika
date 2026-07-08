@@ -1,8 +1,28 @@
-export function createPersonView(person){
+export function createPersonView(
+
+    person,
+
+    {
+
+        layout="row",
+
+        size="medium"
+
+    }={}
+
+){
 
     const element = document.createElement("div");
 
-    element.className = "person-view";
+    element.classList.add(
+
+        "person-view",
+
+        `person-${layout}`,
+
+        `person-${size}`
+
+    );
 
     if(person.image){
 
@@ -22,7 +42,7 @@ export function createPersonView(person){
 
         icon.className = "person-icon person-placeholder";
 
-        icon.style.background = person.color;
+        icon.style.backgroundColor = person.color;
 
         element.appendChild(icon);
 
