@@ -80,7 +80,9 @@
 
 .balance-none .button-settlement{
 
-    color:#fff;
+    background:#e5e7eb;
+
+    opacity:.8;
 
 }
 
