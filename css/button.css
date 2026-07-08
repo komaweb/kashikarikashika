@@ -104,9 +104,19 @@
 
 .button-settlement{
 
-    margin-top:28px;
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    margin-top:24px;
+
+    padding:14px;
 
     background:#222;
+
+    border-radius:16px;
 
     color:#fff;
 
@@ -115,22 +125,15 @@
     font-weight:700;
 
 }
+.settlement-logo{
 
-.button-settlement:hover{
+    display:block;
 
-    opacity:.92;
+    width:120px;
 
-}
+    max-width:100%;
 
-.button-settlement:disabled{
-
-    background:#dddddd;
-
-    color:#888888;
-
-    cursor:not-allowed;
-
-    transform:none;
+    height:auto;
 
 }
 
