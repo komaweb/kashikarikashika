@@ -34,6 +34,8 @@ export const settings = load(
 
 );
 
+applyThemeColors();
+
 export function saveSettings(){
 
     save(
@@ -43,6 +45,8 @@ export function saveSettings(){
         settings
 
     );
+
+    applyThemeColors();
 
 }
 
@@ -65,5 +69,25 @@ export function updateSettings(newSettings){
     );
 
     saveSettings();
+
+}
+
+function applyThemeColors(){
+
+    document.documentElement.style.setProperty(
+
+        "--self-color",
+
+        settings.self.color
+
+    );
+
+    document.documentElement.style.setProperty(
+
+        "--partner-color",
+
+        settings.partner.color
+
+    );
 
 }
