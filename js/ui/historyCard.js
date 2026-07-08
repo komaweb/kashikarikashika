@@ -89,41 +89,29 @@ function createPaymentCard(item,onDelete){
 
     );
 
-    append(
+append(
+    card,
+    createMoney(item.amount)
+);
 
-        card,
+append(
+    card,
+    createHistorySubtitle(item)
+);
 
-        createHistorySubtitle(item)
+if(item.payer){
 
-    );
-
-    if(item.payer){
-
-        const person =
-
-            item.payer==="self"
-
-                ? settings.self
-
-                : settings.partner;
-
-        append(
-
-            card,
-
-            createPersonLabel(person)
-
-        );
-
-    }
+    const person =
+        item.payer==="self"
+            ? settings.self
+            : settings.partner;
 
     append(
-
         card,
-
-        createMoney(item.amount)
-
+        createPersonLabel(person)
     );
+
+}
 
     append(
 
