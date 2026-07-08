@@ -105,3 +105,31 @@ export function clearHistory(){
     );
 
 }
+
+export function addSettlement(amount){
+
+    historyData.unshift({
+
+        id:crypto.randomUUID(),
+
+        type:"settlement",
+
+        amount,
+
+        deleted:false,
+
+        deletedAt:null,
+
+        createdAt:new Date().toISOString()
+
+    });
+
+    save(
+
+        STORAGE_NAME,
+
+        historyData
+
+    );
+
+}
