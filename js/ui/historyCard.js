@@ -47,11 +47,13 @@ function createSettlementItem(item){
 
         ...item,
 
-        title:"✔ 精算",
+        title:"✔ カシカリナシカ",
 
         subtitle:"貸し借りを精算しました",
 
-        payer:null
+        payer:null,
+
+        amount:Math.abs(item.amount)
 
     };
 
@@ -63,21 +65,46 @@ function createPaymentCard(item,onDelete){
 
     if(item.deleted){
 
-        card.classList.add("history-card-deleted");
+        card.classList.add(
+
+            "history-card-deleted"
+
+        );
 
     }
 
-    append(card, createHistoryDate(item.createdAt));
+    append(
 
-    append(card, createHistoryTitle(item));
+        card,
 
-    append(card, createHistorySubtitle(item));
+        createHistoryDate(item.createdAt)
+
+    );
+
+    append(
+
+        card,
+
+        createHistoryTitle(item)
+
+    );
+
+    append(
+
+        card,
+
+        createHistorySubtitle(item)
+
+    );
 
     if(item.payer){
 
         const person =
+
             item.payer==="self"
+
                 ? settings.self
+
                 : settings.partner;
 
         append(
@@ -90,9 +117,21 @@ function createPaymentCard(item,onDelete){
 
     }
 
-    append(card, createMoney(item.amount));
+    append(
 
-    append(card, createHistoryDeletedInfo(item));
+        card,
+
+        createMoney(item.amount)
+
+    );
+
+    append(
+
+        card,
+
+        createHistoryDeletedInfo(item)
+
+    );
 
     append(
 
