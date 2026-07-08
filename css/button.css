@@ -104,15 +104,23 @@
 
 .button-settlement{
 
-    margin-top:24px;
+    display:block;
+
+    width:88%;
+
+    margin:24px auto 0;
 
     padding:0;
 
     background:#fff;
 
+    border:none;
+
     border-radius:18px;
 
     overflow:hidden;
+
+    transition:var(--transition);
 
 }
 
@@ -174,5 +182,18 @@
     width:240px;
 
     height:auto;
+
+}
+
+.balance-none{
+
+    background:#f2f3f5;
+
+    color:#7b7b7b;
+
+}
+.balance-none .balance-label{
+
+    color:#8f8f8f;
 
 }
