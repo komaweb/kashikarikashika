@@ -110,23 +110,15 @@ input{
 
 header{
 
-    height:var(--header-height);
+    height:72px;
 
     display:flex;
 
-    align-items:center;
+    align-items:flex-end;
 
     justify-content:center;
 
-}
-
-header h1{
-
-    font-size:30px;
-
-    font-weight:800;
-
-    letter-spacing:.05em;
+    padding-top:8px;
 
 }
 
