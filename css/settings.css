@@ -4,7 +4,7 @@
 
 .settings-card{
 
-    margin-bottom:18px;
+    margin-bottom:20px;
 
 }
 
@@ -14,21 +14,15 @@
 
     font-size:22px;
 
-    font-weight:700;
-
-}
-
-.settings-card:last-child{
-
-    margin-bottom:0;
+    font-weight:800;
 
 }
 
 /*==================================================
-    Profile Preview
+    Icon Setting
 ==================================================*/
 
-.profile-preview{
+.icon-setting{
 
     display:flex;
 
@@ -36,138 +30,38 @@
 
     align-items:center;
 
-    justify-content:center;
-
-    gap:8px;
-
-    margin-bottom:24px;
-
-    padding:24px;
-
-    border:2px dashed var(--border);
-
-    border-radius:16px;
+    gap:16px;
 
 }
 
-.profile-preview-icon{
+.settings-icon-preview{
 
-    font-size:52px;
+    width:110px;
 
-    line-height:1;
-
-}
-
-.profile-preview-name{
-
-    font-size:22px;
-
-    font-weight:700;
-
-}
-
-/*==================================================
-    Emoji Palette
-==================================================*/
-
-.emoji-palette{
-
-    display:grid;
-
-    grid-template-columns:repeat(auto-fill,minmax(44px,1fr));
-
-    gap:10px;
-
-    margin-top:12px;
-
-}
-
-.emoji-button{
-
-    width:44px;
-
-    height:44px;
-
-    border:1px solid var(--border);
-
-    border-radius:12px;
-
-    background:white;
-
-    font-size:24px;
-
-    transition:var(--transition);
-
-}
-
-.emoji-button:hover{
-
-    transform:translateY(-2px);
-
-    border-color:var(--self);
-
-}
-
-.emoji-button:active{
-
-    transform:scale(.95);
-
-}
-
-/*==================================================
-    Color Palette
-==================================================*/
-
-.color-palette{
-
-    display:flex;
-
-    flex-wrap:wrap;
-
-    gap:12px;
-
-    margin-top:12px;
-
-}
-
-.color-button{
-
-    width:36px;
-
-    height:36px;
+    height:110px;
 
     border-radius:50%;
 
-    border:3px solid white;
+    object-fit:cover;
 
-    box-shadow:0 0 0 1px var(--border);
+    background:#f3f4f6;
 
-    cursor:pointer;
+    border:2px solid var(--border);
 
-    transition:var(--transition);
-
-}
-
-.color-button:hover{
-
-    transform:scale(1.08);
+    box-shadow:var(--shadow);
 
 }
 
-.color-button.active{
+.settings-icon-preview:not([src]),
 
-    transform:scale(1.15);
+.settings-icon-preview[src=""]{
 
-    box-shadow:
-        0 0 0 2px var(--text);
+    display:none;
+
 }
 
-/*==================================================
-    Save Button
-==================================================*/
+.icon-setting .button{
 
-#saveSettingsButton{
-
-    margin-top:8px;
+    width:100%;
 
 }
