@@ -1,6 +1,8 @@
 import {
 
-    getHistory,
+    getRecentHistory,
+    getActiveHistory,
+    getDeletedHistory,
     deleteHistory
 
 } from "../historyStore.js";
@@ -37,11 +39,7 @@ export function renderHistory({
 
     historyList.innerHTML = "";
 
-    let history = getHistory();
-
-    history = filterHistory(
-
-        history,
+    let history = getFilteredHistory(
 
         filter
 
@@ -49,7 +47,13 @@ export function renderHistory({
 
     if(limit){
 
-        history = history.slice(0,limit);
+        history = history.slice(
+
+            0,
+
+            limit
+
+        );
 
     }
 
@@ -93,37 +97,23 @@ export function renderHistory({
 
 }
 
-function filterHistory(
-
-    history,
-
-    filter
-
-){
+function getFilteredHistory(filter){
 
     switch(filter){
 
         case "active":
 
-            return history.filter(
-
-                item=>!item.deleted
-
-            );
+            return getActiveHistory();
 
         case "deleted":
 
-            return history.filter(
-
-                item=>item.deleted
-
-            );
+            return getDeletedHistory();
 
         case "recent":
 
         default:
 
-            return history;
+            return getRecentHistory();
 
     }
 
