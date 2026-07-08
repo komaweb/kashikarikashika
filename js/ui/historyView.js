@@ -12,8 +12,6 @@ import {
 
 export function renderHistory({
 
-    target,
-
     filter = "active",
 
     limit = null,
@@ -22,7 +20,21 @@ export function renderHistory({
 
 }){
 
-    target.innerHTML = "";
+    const historyList =
+
+        document.getElementById(
+
+            "historyList"
+
+        );
+
+    if(!historyList){
+
+        return;
+
+    }
+
+    historyList.innerHTML = "";
 
     let history = getHistory();
 
@@ -42,7 +54,7 @@ export function renderHistory({
 
     if(history.length===0){
 
-        target.innerHTML = `
+        historyList.innerHTML = `
 
             <p class="empty">
 
@@ -58,13 +70,13 @@ export function renderHistory({
 
     history.forEach(item=>{
 
-        target.appendChild(
+        historyList.appendChild(
 
             createHistoryCard(
 
                 item,
 
-                id=>{
+                ()=>{
 
                     refresh();
 
