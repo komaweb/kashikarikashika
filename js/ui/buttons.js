@@ -11,6 +11,8 @@ import {
     calculateBalance
 } from "../calculator.js";
 
+import { formatMoney } from "./format.js";
+
 export function initializeButtons(refresh){
 
     bindPaymentButton(
@@ -201,14 +203,23 @@ function registerSettlement(refresh){
 
     }
 
-    /*
-        次回ここへ確認ダイアログを追加
+    const message =
 
-        精算を記録しますか？
+`精算を記録しますか？
 
-        ¥○○ の貸し借りを
-        精算済みとして記録します。
-    */
+${formatMoney(Math.abs(balance))} の貸し借りを精算済みとして記録します。`;
+
+    const result = confirm(
+
+        message
+
+    );
+
+    if(!result){
+
+        return;
+
+    }
 
     addSettlement(
 
