@@ -1,14 +1,26 @@
 /*==================================================
-    Button
+    Common Button
 ==================================================*/
 
 .button{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
 
     width:100%;
 
     padding:18px;
 
+    border:none;
+
     border-radius:18px;
+
+    font:inherit;
+
+    cursor:pointer;
 
     transition:var(--transition);
 
@@ -30,21 +42,29 @@
     Payment Button
 ==================================================*/
 
+.button-row{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:16px;
+
+}
+
 .button-self,
 
 .button-partner{
 
-    display:flex;
-
     flex-direction:column;
-
-    align-items:center;
 
     justify-content:center;
 
+    align-items:center;
+
     gap:10px;
 
-    min-height:170px;
+    min-height:180px;
 
     background:#fff;
 
@@ -66,7 +86,7 @@
 
 .payment-button-label{
 
-    margin-top:6px;
+    margin-top:4px;
 
     font-size:18px;
 
@@ -84,13 +104,7 @@
 
 .button-settlement{
 
-    width:100%;
-
-    margin-top:24px;
-
-    padding:16px;
-
-    border-radius:16px;
+    margin-top:28px;
 
     background:#222;
 
@@ -104,16 +118,58 @@
 
 .button-settlement:hover{
 
-    opacity:.9;
+    opacity:.92;
 
 }
 
 .button-settlement:disabled{
 
-    background:#d9d9d9;
+    background:#dddddd;
 
-    color:#888;
+    color:#888888;
 
     cursor:not-allowed;
+
+    transform:none;
+
+}
+
+/*==================================================
+    Danger Button
+==================================================*/
+
+.button-danger{
+
+    width:100%;
+
+    margin-top:10px;
+
+    padding:12px;
+
+    border:1px solid #ffd4d4;
+
+    border-radius:14px;
+
+    background:#fff5f5;
+
+    color:#d73a49;
+
+    font-size:15px;
+
+    font-weight:700;
+
+    transition:var(--transition);
+
+}
+
+.button-danger:hover{
+
+    background:#ffeaea;
+
+}
+
+.button-danger:active{
+
+    transform:scale(.98);
 
 }
