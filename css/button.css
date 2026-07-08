@@ -104,34 +104,23 @@
 
 .button-settlement{
 
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
     margin-top:24px;
 
-    padding:14px;
+    padding:0;
 
-    background:#222;
+    background:#fff;
 
-    border-radius:16px;
+    border-radius:18px;
 
-    color:#fff;
-
-    font-size:18px;
-
-    font-weight:700;
+    overflow:hidden;
 
 }
+
 .settlement-logo{
 
     display:block;
 
-    width:120px;
-
-    max-width:100%;
+    width:100%;
 
     height:auto;
 
