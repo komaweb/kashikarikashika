@@ -148,11 +148,13 @@
 
 .color-button.active{
 
+    transform:scale(1.12);
+
     outline:3px solid #fff;
 
     box-shadow:
 
-        0 0 0 2px #333,
+        0 0 0 2px #374151,
 
         var(--shadow);
 
