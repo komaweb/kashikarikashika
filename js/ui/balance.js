@@ -25,6 +25,14 @@ export function updateBalance(){
 
     );
 
+    const balanceCard =
+
+        document.querySelector(
+
+            ".balance-card"
+
+        );
+
     const balanceText =
 
         document.getElementById(
@@ -41,21 +49,37 @@ export function updateBalance(){
 
         );
 
+    balanceCard.classList.remove(
+
+        "balance-self",
+
+        "balance-partner",
+
+        "balance-none"
+
+    );
+
     switch(status){
 
         case "self":
 
             balanceText.textContent =
 
-                `${settings.self.icon} ${settings.self.name}が貸しています`;
+                `${settings.partner.icon} ${settings.partner.name}が借りています`;
 
             balanceText.style.color =
 
-                settings.self.color;
+                settings.partner.color;
 
             balanceAmount.textContent =
 
                 formatMoney(balance);
+
+            balanceCard.classList.add(
+
+                "balance-partner"
+
+            );
 
             break;
 
@@ -63,11 +87,11 @@ export function updateBalance(){
 
             balanceText.textContent =
 
-                `${settings.partner.icon} ${settings.partner.name}が貸しています`;
+                `${settings.self.icon} ${settings.self.name}が借りています`;
 
             balanceText.style.color =
 
-                settings.partner.color;
+                settings.self.color;
 
             balanceAmount.textContent =
 
@@ -76,6 +100,12 @@ export function updateBalance(){
                     Math.abs(balance)
 
                 );
+
+            balanceCard.classList.add(
+
+                "balance-self"
+
+            );
 
             break;
 
@@ -92,6 +122,12 @@ export function updateBalance(){
             balanceAmount.textContent =
 
                 formatMoney(0);
+
+            balanceCard.classList.add(
+
+                "balance-none"
+
+            );
 
             break;
 
