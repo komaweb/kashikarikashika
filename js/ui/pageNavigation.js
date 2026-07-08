@@ -1,20 +1,18 @@
-import {
+export function initializeNavigation({
 
-    openMoneyPage,
-    openHistoryPage,
-    openSettingsPage
+    money = null,
 
-} from "../pages.js";
+    history = null,
 
-export function initializeNavigation(currentPage){
+    settings = null
+
+}){
 
     bind(
 
         "moneyTab",
 
-        currentPage !== "money",
-
-        openMoneyPage
+        money
 
     );
 
@@ -22,9 +20,7 @@ export function initializeNavigation(currentPage){
 
         "historyTab",
 
-        currentPage !== "history",
-
-        openHistoryPage
+        history
 
     );
 
@@ -32,9 +28,7 @@ export function initializeNavigation(currentPage){
 
         "settingsTab",
 
-        currentPage !== "settings",
-
-        openSettingsPage
+        settings
 
     );
 
@@ -44,13 +38,11 @@ function bind(
 
     id,
 
-    enabled,
-
     callback
 
 ){
 
-    if(!enabled){
+    if(!callback){
 
         return;
 
