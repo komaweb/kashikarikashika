@@ -1,36 +1,60 @@
 import { getHistory } from "../historyStore.js";
+
 import {
+
     calculateBalance,
     getBalanceStatus
+
 } from "../calculator.js";
+
 import { settings } from "../settings.js";
+
 import { formatMoney } from "./format.js";
 
 export function updateBalance(){
 
-    const history = getHistory();
+    const balance = calculateBalance(
 
-    const balance = calculateBalance(history);
+        getHistory()
 
-    const status = getBalanceStatus(balance);
+    );
+
+    const status = getBalanceStatus(
+
+        balance
+
+    );
 
     const balanceText =
-        document.getElementById("balanceText");
+
+        document.getElementById(
+
+            "balanceText"
+
+        );
 
     const balanceAmount =
-        document.getElementById("balanceAmount");
+
+        document.getElementById(
+
+            "balanceAmount"
+
+        );
 
     switch(status){
 
         case "self":
 
             balanceText.textContent =
+
                 `${settings.self.icon} ${settings.self.name}が貸しています`;
 
             balanceText.style.color =
+
                 settings.self.color;
 
             balanceAmount.textContent =
+
                 formatMoney(balance);
 
             break;
@@ -38,25 +62,35 @@ export function updateBalance(){
         case "partner":
 
             balanceText.textContent =
+
                 `${settings.partner.icon} ${settings.partner.name}が貸しています`;
 
             balanceText.style.color =
+
                 settings.partner.color;
 
             balanceAmount.textContent =
-                formatMoney(Math.abs(balance));
+
+                formatMoney(
+
+                    Math.abs(balance)
+
+                );
 
             break;
 
         default:
 
             balanceText.textContent =
+
                 "貸し借りなし！";
 
             balanceText.style.color =
+
                 "var(--sub)";
 
             balanceAmount.textContent =
+
                 formatMoney(0);
 
             break;
