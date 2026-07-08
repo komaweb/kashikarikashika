@@ -55,7 +55,9 @@ export function initializeSettingsView(refresh){
 
         elements.selfPreview,
 
-        elements.selfDeleteButton
+        elements.selfDeleteButton,
+
+        "self"
 
     );
 
@@ -67,7 +69,9 @@ export function initializeSettingsView(refresh){
 
         elements.partnerPreview,
 
-        elements.partnerDeleteButton
+        elements.partnerDeleteButton,
+
+        "partner"
 
     );
 
@@ -75,9 +79,9 @@ export function initializeSettingsView(refresh){
 
         "click",
 
-        async()=>{
+        ()=>{
 
-            await saveSettings(elements);
+            saveNames(elements);
 
             refresh();
 
@@ -129,7 +133,9 @@ function bindImagePicker(
 
     preview,
 
-    deleteButton
+    deleteButton,
+
+    target
 
 ){
 
@@ -165,6 +171,16 @@ function bindImagePicker(
 
             preview.src=image;
 
+            updateSettings({
+
+                [target]:{
+
+                    image:image
+
+                }
+
+            });
+
         }
 
     );
@@ -179,33 +195,37 @@ function bindImagePicker(
 
             input.value="";
 
+            updateSettings({
+
+                [target]:{
+
+                    image:null
+
+                }
+
+            });
+
         }
 
     );
 
 }
 
-async function saveSettings(elements){
+function saveNames(elements){
 
     updateSettings({
 
         self:{
 
             name:
-                elements.selfName.value.trim() || "自分",
-
-            image:
-                elements.selfPreview.getAttribute("src") || null
+                elements.selfName.value.trim() || "自分"
 
         },
 
         partner:{
 
             name:
-                elements.partnerName.value.trim() || "相手",
-
-            image:
-                elements.partnerPreview.getAttribute("src") || null
+                elements.partnerName.value.trim() || "相手"
 
         }
 
