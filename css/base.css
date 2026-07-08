@@ -490,3 +490,35 @@ button{
     font-size:28px;
 
 }
+
+/*==================================
+    Person Text
+==================================*/
+
+.person-text{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    gap:6px;
+
+}
+
+.person-row + .person-label{
+
+    display:none;
+
+}
+
+.person-label{
+
+    font-size:15px;
+
+    font-weight:600;
+
+    text-align:center;
+
+}
