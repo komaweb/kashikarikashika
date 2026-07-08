@@ -12,16 +12,36 @@ export function updateBalancePerson(
 
     target.replaceChildren();
 
+    target.className =
+
+        "balance-person";
+
     target.appendChild(
 
-        createPersonView(person)
+        createPersonView(
+
+            person,
+
+            {
+
+                layout:"column",
+
+                size:"large"
+
+            }
+
+        )
 
     );
 
-    target.append(
+    const label = document.createElement("div");
 
-        text
+    label.className =
 
-    );
+        "balance-person-label";
+
+    label.textContent = text;
+
+    target.appendChild(label);
 
 }
