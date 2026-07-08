@@ -97,4 +97,32 @@ export function updateBalance(){
 
     }
 
+    updateSettlementButton(
+
+        balance
+
+    );
+
+}
+
+function updateSettlementButton(balance){
+
+    const button =
+
+        document.getElementById(
+
+            "settlementButton"
+
+        );
+
+    if(!button){
+
+        return;
+
+    }
+
+    button.disabled =
+
+        balance===0;
+
 }
