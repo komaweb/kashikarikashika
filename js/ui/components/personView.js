@@ -4,51 +4,39 @@ export function createPersonView(
 
     {
 
-        layout="row",
+        size="medium",
 
-        size="medium"
+        layout="column"
 
     }={}
 
 ){
 
-    const element = document.createElement("div");
+    const wrapper = document.createElement("div");
 
-    element.classList.add(
+    wrapper.className =
 
-        "person-view",
+        `person-view person-${layout} person-${size}`;
 
-        `person-${layout}`,
-
-        `person-${size}`
-
-    );
+    let icon;
 
     if(person.image){
 
-        const image = document.createElement("img");
+        icon = document.createElement("img");
 
-        image.className = "person-icon";
+        icon.src = person.image;
 
-        image.src = person.image;
+        icon.alt = person.name;
 
-        image.alt = person.name;
-
-        element.appendChild(image);
+        icon.className = "person-icon";
 
     }else{
 
-        const icon = document.createElement("div");
+        icon = document.createElement("div");
 
         icon.className =
 
-            "person-icon person-placeholder";
-
-        icon.style.backgroundColor =
-
-            person.color;
-
-        element.appendChild(icon);
+            "person-placeholder";
 
     }
 
@@ -58,8 +46,14 @@ export function createPersonView(
 
     name.textContent = person.name;
 
-    element.appendChild(name);
+    wrapper.append(
 
-    return element;
+        icon,
+
+        name
+
+    );
+
+    return wrapper;
 
 }
