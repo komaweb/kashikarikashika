@@ -49,6 +49,8 @@ function createSettlementItem(item){
 
         title:"✔ 精算",
 
+        subtitle:"貸し借りを精算しました",
+
         payer:null
 
     };
