@@ -199,3 +199,28 @@ input:focus{
     box-shadow:0 0 0 4px rgba(79,142,247,.15);
 
 }
+
+
+header{
+
+    height:90px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.header-logo{
+
+    width:280px;
+
+    max-width:85%;
+
+    height:auto;
+
+    display:block;
+
+}
