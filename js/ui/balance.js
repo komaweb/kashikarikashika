@@ -13,6 +13,22 @@ import { formatMoney } from "./format.js";
 
 export function updateBalance(){
 
+    document.documentElement.style.setProperty(
+
+        "--self-color",
+
+        settings.self.color
+
+    );
+
+    document.documentElement.style.setProperty(
+
+        "--partner-color",
+
+        settings.partner.color
+
+    );
+
     const balance = calculateBalance(
 
         getHistory()
@@ -67,10 +83,6 @@ export function updateBalance(){
 
                 `${settings.partner.icon} ${settings.partner.name}が借りています`;
 
-            balanceText.style.color =
-
-                settings.partner.color;
-
             balanceAmount.textContent =
 
                 formatMoney(balance);
@@ -88,10 +100,6 @@ export function updateBalance(){
             balanceText.textContent =
 
                 `${settings.self.icon} ${settings.self.name}が借りています`;
-
-            balanceText.style.color =
-
-                settings.self.color;
 
             balanceAmount.textContent =
 
@@ -114,10 +122,6 @@ export function updateBalance(){
             balanceText.textContent =
 
                 "貸し借りなし！";
-
-            balanceText.style.color =
-
-                "var(--sub)";
 
             balanceAmount.textContent =
 
