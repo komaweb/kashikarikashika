@@ -1,35 +1,159 @@
-import { addHistory } from "../historyStore.js";
+import {
+    addHistory,
+    addSettlement
+} from "../historyStore.js";
+
+import {
+    getHistory
+} from "../historyStore.js";
+
+import {
+    calculateBalance
+} from "../calculator.js";
 
 export function initializeButtons(refresh){
 
-    const selfButton = document.getElementById("selfButton");
-    const partnerButton = document.getElementById("partnerButton");
+    bindPaymentButton(
 
-    selfButton.addEventListener("click",()=>{
+        "selfButton",
 
-        registerPayment("self", refresh);
+        "self",
 
-    });
+        refresh
 
-    partnerButton.addEventListener("click",()=>{
+    );
 
-        registerPayment("partner", refresh);
+    bindPaymentButton(
 
-    });
+        "partnerButton",
+
+        "partner",
+
+        refresh
+
+    );
+
+    bindSettlementButton(
+
+        refresh
+
+    );
 
 }
 
-function registerPayment(payer, refresh){
+function bindPaymentButton(
 
-    const titleInput = document.getElementById("titleInput");
-    const amountInput = document.getElementById("amountInput");
+    id,
 
-    const title = titleInput.value.trim();
-    const amount = Number(amountInput.value);
+    payer,
 
-    if(amount <= 0){
+    refresh
 
-        alert("金額を入力してください。");
+){
+
+    const button = document.getElementById(id);
+
+    if(!button){
+
+        return;
+
+    }
+
+    button.addEventListener(
+
+        "click",
+
+        ()=>{
+
+            registerPayment(
+
+                payer,
+
+                refresh
+
+            );
+
+        }
+
+    );
+
+}
+
+function bindSettlementButton(refresh){
+
+    const button = document.getElementById(
+
+        "settlementButton"
+
+    );
+
+    if(!button){
+
+        return;
+
+    }
+
+    button.addEventListener(
+
+        "click",
+
+        ()=>{
+
+            registerSettlement(
+
+                refresh
+
+            );
+
+        }
+
+    );
+
+}
+
+function registerPayment(
+
+    payer,
+
+    refresh
+
+){
+
+    const titleInput =
+
+        document.getElementById(
+
+            "titleInput"
+
+        );
+
+    const amountInput =
+
+        document.getElementById(
+
+            "amountInput"
+
+        );
+
+    const title =
+
+        titleInput.value.trim();
+
+    const amount =
+
+        Number(
+
+            amountInput.value
+
+        );
+
+    if(amount<=0){
+
+        alert(
+
+            "金額を入力してください。"
+
+        );
 
         return;
 
@@ -37,9 +161,7 @@ function registerPayment(payer, refresh){
 
     addHistory({
 
-        id: crypto.randomUUID(),
-
-        type: "payment",
+        id:crypto.randomUUID(),
 
         payer,
 
@@ -47,12 +169,52 @@ function registerPayment(payer, refresh){
 
         amount,
 
-        createdAt: new Date()
+        createdAt:new Date()
 
     });
 
-    titleInput.value = "";
-    amountInput.value = "";
+    titleInput.value="";
+
+    amountInput.value="";
+
+    refresh();
+
+}
+
+function registerSettlement(refresh){
+
+    const balance = calculateBalance(
+
+        getHistory()
+
+    );
+
+    if(balance===0){
+
+        alert(
+
+            "貸し借りがありません。"
+
+        );
+
+        return;
+
+    }
+
+    /*
+        次回ここへ確認ダイアログを追加
+
+        精算を記録しますか？
+
+        ¥○○ の貸し借りを
+        精算済みとして記録します。
+    */
+
+    addSettlement(
+
+        Math.abs(balance)
+
+    );
 
     refresh();
 
