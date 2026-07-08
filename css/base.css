@@ -312,3 +312,78 @@ button{
     background:white;
 
 }
+
+
+/*==================================
+    Balance Card
+==================================*/
+
+.balance-card{
+
+    transition:.2s;
+
+}
+
+.balance-self{
+
+    background:var(--self-color);
+
+    color:#fff;
+
+}
+
+.balance-partner{
+
+    background:var(--partner-color);
+
+    color:#fff;
+
+}
+
+.balance-none{
+
+    background:#fff;
+
+    color:inherit;
+
+}
+
+.balance-card .balance-label{
+
+    color:inherit;
+
+    opacity:.85;
+
+}
+
+.balance-card h2{
+
+    color:inherit !important;
+
+}
+
+.balance-card #balanceAmount{
+
+    color:inherit;
+
+}
+
+.balance-card .button-settlement{
+
+    margin-top:24px;
+
+    background:#fff;
+
+    color:#222;
+
+    border:none;
+
+}
+
+.balance-card .button-settlement:disabled{
+
+    background:#eee;
+
+    color:#999;
+
+}
