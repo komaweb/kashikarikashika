@@ -17,8 +17,11 @@ export function createHistoryCard(item,onDelete){
 
         case "settlement":
 
-            return createSettlementCard(item);
+    item.title = "✔ 精算";
 
+    item.payer = "self";
+
+    return createPaymentCard(item,onDelete);
         case "payment":
 
         default:
