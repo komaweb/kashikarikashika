@@ -6,11 +6,11 @@ export function initializeHistoryView(){
 
     initializeTabs();
 
-    refreshHistoryPage();
+    refreshHistoryView();
 
 }
 
-export function refreshHistoryPage(){
+export function refreshHistoryView(){
 
     renderHistory({
 
@@ -24,7 +24,7 @@ export function refreshHistoryPage(){
 
         filter:currentFilter,
 
-        refresh:refreshHistoryPage
+        refresh:refreshHistoryView
 
     });
 
@@ -32,105 +32,111 @@ export function refreshHistoryPage(){
 
 function initializeTabs(){
 
-    const activeTab =
+    bindTab(
 
-        document.getElementById(
+        "historyActiveTab",
 
-            "historyActiveTab"
+        "active"
 
-        );
+    );
 
-    const deletedTab =
+    bindTab(
 
-        document.getElementById(
+        "historyDeletedTab",
 
-            "historyDeletedTab"
+        "deleted"
 
-        );
+    );
 
-    if(activeTab){
-
-        activeTab.addEventListener(
-
-            "click",
-
-            ()=>{
-
-                changeTab(
-
-                    "active"
-
-                );
-
-            }
-
-        );
-
-    }
-
-    if(deletedTab){
-
-        deletedTab.addEventListener(
-
-            "click",
-
-            ()=>{
-
-                changeTab(
-
-                    "deleted"
-
-                );
-
-            }
-
-        );
-
-    }
+    updateTabs();
 
 }
 
-function changeTab(filter){
+function bindTab(
 
-    currentFilter = filter;
+    id,
 
-    updateTabStyle();
+    filter
 
-    refreshHistoryPage();
+){
+
+    const button =
+
+        document.getElementById(id);
+
+    if(!button){
+
+        return;
+
+    }
+
+    button.addEventListener(
+
+        "click",
+
+        ()=>{
+
+            if(currentFilter===filter){
+
+                return;
+
+            }
+
+            currentFilter=filter;
+
+            updateTabs();
+
+            refreshHistoryView();
+
+        }
+
+    );
 
 }
 
-function updateTabStyle(){
+function updateTabs(){
 
-    const activeTab =
+    updateTab(
 
-        document.getElementById(
-
-            "historyActiveTab"
-
-        );
-
-    const deletedTab =
-
-        document.getElementById(
-
-            "historyDeletedTab"
-
-        );
-
-    activeTab?.classList.toggle(
-
-        "active",
+        "historyActiveTab",
 
         currentFilter==="active"
 
     );
 
-    deletedTab?.classList.toggle(
+    updateTab(
+
+        "historyDeletedTab",
+
+        currentFilter==="deleted"
+
+    );
+
+}
+
+function updateTab(
+
+    id,
+
+    active
+
+){
+
+    const button =
+
+        document.getElementById(id);
+
+    if(!button){
+
+        return;
+
+    }
+
+    button.classList.toggle(
 
         "active",
 
-        currentFilter==="deleted"
+        active
 
     );
 
