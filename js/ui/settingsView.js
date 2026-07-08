@@ -22,6 +22,9 @@ export function initializeSettingsView(refresh){
         selfButton:
             document.getElementById("selfIconButton"),
 
+        selfDeleteButton:
+            document.getElementById("selfIconDeleteButton"),
+
         partnerName:
             document.getElementById("partnerName"),
 
@@ -33,6 +36,9 @@ export function initializeSettingsView(refresh){
 
         partnerButton:
             document.getElementById("partnerIconButton"),
+
+        partnerDeleteButton:
+            document.getElementById("partnerIconDeleteButton"),
 
         saveButton:
             document.getElementById("saveSettingsButton")
@@ -47,7 +53,9 @@ export function initializeSettingsView(refresh){
 
         elements.selfIcon,
 
-        elements.selfPreview
+        elements.selfPreview,
+
+        elements.selfDeleteButton
 
     );
 
@@ -57,7 +65,9 @@ export function initializeSettingsView(refresh){
 
         elements.partnerIcon,
 
-        elements.partnerPreview
+        elements.partnerPreview,
+
+        elements.partnerDeleteButton
 
     );
 
@@ -92,12 +102,20 @@ function loadSettings(elements){
         elements.selfPreview.src =
             settings.self.image;
 
+    }else{
+
+        elements.selfPreview.removeAttribute("src");
+
     }
 
     if(settings.partner.image){
 
         elements.partnerPreview.src =
             settings.partner.image;
+
+    }else{
+
+        elements.partnerPreview.removeAttribute("src");
 
     }
 
@@ -109,7 +127,9 @@ function bindImagePicker(
 
     input,
 
-    preview
+    preview,
+
+    deleteButton
 
 ){
 
@@ -149,6 +169,20 @@ function bindImagePicker(
 
     );
 
+    deleteButton.addEventListener(
+
+        "click",
+
+        ()=>{
+
+            preview.removeAttribute("src");
+
+            input.value="";
+
+        }
+
+    );
+
 }
 
 async function saveSettings(elements){
@@ -161,7 +195,7 @@ async function saveSettings(elements){
                 elements.selfName.value.trim() || "自分",
 
             image:
-                elements.selfPreview.src || null
+                elements.selfPreview.getAttribute("src") || null
 
         },
 
@@ -171,7 +205,7 @@ async function saveSettings(elements){
                 elements.partnerName.value.trim() || "相手",
 
             image:
-                elements.partnerPreview.src || null
+                elements.partnerPreview.getAttribute("src") || null
 
         }
 
