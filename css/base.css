@@ -251,3 +251,45 @@ button{
     }
 
 }
+
+.button-settlement{
+
+    width:100%;
+
+    margin-top:20px;
+
+    padding:14px 20px;
+
+    border:none;
+
+    border-radius:16px;
+
+    background:#222;
+
+    color:#fff;
+
+    font-size:17px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+}
+
+.button-settlement:hover{
+
+    opacity:.9;
+
+}
+
+.button-settlement:disabled{
+
+    background:#d9d9d9;
+
+    color:#888;
+
+    cursor:not-allowed;
+
+}
