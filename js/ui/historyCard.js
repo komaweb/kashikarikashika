@@ -13,6 +13,24 @@ import { createHistoryDeleteButton } from "./components/historyDeleteButton.js";
 
 export function createHistoryCard(item,onDelete){
 
+    switch(item.type){
+
+        case "settlement":
+
+            return createSettlementCard(item);
+
+        case "payment":
+
+        default:
+
+            return createPaymentCard(item,onDelete);
+
+    }
+
+}
+
+function createPaymentCard(item,onDelete){
+
     const person =
         item.payer === "self"
             ? settings.self
@@ -41,6 +59,32 @@ export function createHistoryCard(item,onDelete){
     append(card, createHistoryDeleteButton(item,onDelete));
 
     return card;
+
+}
+
+function createSettlementCard(item){
+
+    const card = createCard("history-card settlement-card");
+
+    append(card, createHistoryDate(item.createdAt));
+
+    append(card, createSettlementTitle());
+
+    append(card, createMoney(item.amount));
+
+    return card;
+
+}
+
+function createSettlementTitle(){
+
+    const title = document.createElement("div");
+
+    title.className = "history-title";
+
+    title.textContent = "✔ 精算";
+
+    return title;
 
 }
 
