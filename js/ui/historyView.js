@@ -1,25 +1,55 @@
 import {
-    getHistory,
-    deleteHistory
+
+    getHistory
+
 } from "../historyStore.js";
 
-import { createHistoryCard } from "./historyCard.js";
+import {
 
-export function renderHistory(refresh){
+    createHistoryCard
 
-    const historyList =
-        document.getElementById("historyList");
+} from "./historyCard.js";
 
-    const history = getHistory();
+export function renderHistory({
 
-    historyList.innerHTML = "";
+    target,
 
-    if(history.length === 0){
+    filter = "active",
 
-        historyList.innerHTML = `
+    limit = null,
+
+    refresh
+
+}){
+
+    target.innerHTML = "";
+
+    let history = getHistory();
+
+    history = filterHistory(
+
+        history,
+
+        filter
+
+    );
+
+    if(limit){
+
+        history = history.slice(0,limit);
+
+    }
+
+    if(history.length===0){
+
+        target.innerHTML = `
+
             <p class="empty">
-                履歴はまだありません
+
+                履歴はありません
+
             </p>
+
         `;
 
         return;
@@ -28,22 +58,54 @@ export function renderHistory(refresh){
 
     history.forEach(item=>{
 
-        const card = createHistoryCard(
+        target.appendChild(
 
-            item,
+            createHistoryCard(
 
-            id=>{
+                item,
 
-                deleteHistory(id);
+                id=>{
 
-                refresh();
+                    refresh();
 
-            }
+                }
+
+            )
 
         );
 
-        historyList.appendChild(card);
-
     });
+
+}
+
+function filterHistory(
+
+    history,
+
+    filter
+
+){
+
+    switch(filter){
+
+        case "deleted":
+
+            return history.filter(
+
+                item=>item.deleted
+
+            );
+
+        case "active":
+
+        default:
+
+            return history.filter(
+
+                item=>!item.deleted
+
+            );
+
+    }
 
 }
