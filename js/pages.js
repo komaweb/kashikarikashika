@@ -101,7 +101,7 @@ export function refreshMoneyPage(){
 
     renderHistory({
 
-        filter:"active",
+        filter:"recent",
 
         limit:5,
 
