@@ -99,3 +99,30 @@ function createButton({
     return button;
 
 }
+
+
+button.addEventListener("click",()=>{
+
+    switch(id){
+
+        case "moneyTab":
+
+            location.href="money.html";
+
+            break;
+
+        case "historyTab":
+
+            location.href="history.html";
+
+            break;
+
+        case "settingsTab":
+
+            location.href="settings.html";
+
+            break;
+
+    }
+
+});
