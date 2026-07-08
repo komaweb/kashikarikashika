@@ -390,7 +390,7 @@ button{
 
 
 /*==================================
-    Person
+    Person View
 ==================================*/
 
 .person-view{
@@ -399,15 +399,29 @@ button{
 
     align-items:center;
 
+}
+
+.person-row{
+
+    flex-direction:row;
+
+    gap:10px;
+
+}
+
+.person-column{
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    text-align:center;
+
     gap:8px;
 
 }
 
 .person-icon{
-
-    width:24px;
-
-    height:24px;
 
     border-radius:50%;
 
@@ -419,12 +433,60 @@ button{
 
 .person-placeholder{
 
-    border:2px solid rgba(255,255,255,.25);
+    border:2px solid rgba(255,255,255,.35);
 
 }
 
 .person-name{
 
-    font-weight:600;
+    font-weight:700;
+
+}
+
+/*========== Small ==========*/
+
+.person-small .person-icon{
+
+    width:28px;
+
+    height:28px;
+
+}
+
+.person-small .person-name{
+
+    font-size:15px;
+
+}
+
+/*========== Medium ==========*/
+
+.person-medium .person-icon{
+
+    width:42px;
+
+    height:42px;
+
+}
+
+.person-medium .person-name{
+
+    font-size:18px;
+
+}
+
+/*========== Large ==========*/
+
+.person-large .person-icon{
+
+    width:64px;
+
+    height:64px;
+
+}
+
+.person-large .person-name{
+
+    font-size:28px;
 
 }
