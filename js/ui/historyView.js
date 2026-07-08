@@ -13,7 +13,7 @@ import {
 
 export function renderHistory({
 
-    filter = "active",
+    filter = "recent",
 
     limit = null,
 
@@ -103,6 +103,14 @@ function filterHistory(
 
     switch(filter){
 
+        case "active":
+
+            return history.filter(
+
+                item=>!item.deleted
+
+            );
+
         case "deleted":
 
             return history.filter(
@@ -111,15 +119,11 @@ function filterHistory(
 
             );
 
-        case "active":
+        case "recent":
 
         default:
 
-            return history.filter(
-
-                item=>!item.deleted
-
-            );
+            return history;
 
     }
 
