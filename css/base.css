@@ -492,33 +492,109 @@ button{
 }
 
 /*==================================
-    Person Text
+    Person
 ==================================*/
 
-.person-text{
+.person-view{
 
     display:flex;
+
+}
+
+.person-row{
+
+    flex-direction:row;
+
+    align-items:center;
+
+    justify-content:flex-start;
+
+    gap:10px;
+
+}
+
+.person-column{
 
     flex-direction:column;
 
     align-items:center;
 
-    gap:6px;
-
-}
-
-.person-row + .person-label{
-
-    display:none;
-
-}
-
-.person-label{
-
-    font-size:15px;
-
-    font-weight:600;
+    justify-content:center;
 
     text-align:center;
+
+    gap:10px;
+
+}
+
+.person-icon{
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    flex-shrink:0;
+
+}
+
+.person-placeholder{
+
+    border:2px solid rgba(255,255,255,.35);
+
+}
+
+.person-name{
+
+    font-weight:700;
+
+    line-height:1.2;
+
+}
+
+/* ===== Small ===== */
+
+.person-small .person-icon{
+
+    width:28px;
+
+    height:28px;
+
+}
+
+.person-small .person-name{
+
+    font-size:18px;
+
+}
+
+/* ===== Medium ===== */
+
+.person-medium .person-icon{
+
+    width:52px;
+
+    height:52px;
+
+}
+
+.person-medium .person-name{
+
+    font-size:22px;
+
+}
+
+/* ===== Large ===== */
+
+.person-large .person-icon{
+
+    width:72px;
+
+    height:72px;
+
+}
+
+.person-large .person-name{
+
+    font-size:34px;
 
 }
