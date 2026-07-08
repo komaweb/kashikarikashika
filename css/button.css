@@ -1,0 +1,119 @@
+/*==================================================
+    Button
+==================================================*/
+
+.button{
+
+    width:100%;
+
+    padding:18px;
+
+    border-radius:18px;
+
+    transition:var(--transition);
+
+}
+
+.button:hover{
+
+    transform:translateY(-2px);
+
+}
+
+.button:active{
+
+    transform:scale(.98);
+
+}
+
+/*==================================================
+    Payment Button
+==================================================*/
+
+.button-self,
+
+.button-partner{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:10px;
+
+    min-height:170px;
+
+    background:#fff;
+
+    color:var(--text);
+
+}
+
+.button-self{
+
+    border:2px solid var(--self-color);
+
+}
+
+.button-partner{
+
+    border:2px solid var(--partner-color);
+
+}
+
+.payment-button-label{
+
+    margin-top:6px;
+
+    font-size:18px;
+
+    font-weight:600;
+
+    line-height:1.2;
+
+    text-align:center;
+
+}
+
+/*==================================================
+    Settlement Button
+==================================================*/
+
+.button-settlement{
+
+    width:100%;
+
+    margin-top:24px;
+
+    padding:16px;
+
+    border-radius:16px;
+
+    background:#222;
+
+    color:#fff;
+
+    font-size:18px;
+
+    font-weight:700;
+
+}
+
+.button-settlement:hover{
+
+    opacity:.9;
+
+}
+
+.button-settlement:disabled{
+
+    background:#d9d9d9;
+
+    color:#888;
+
+    cursor:not-allowed;
+
+}
