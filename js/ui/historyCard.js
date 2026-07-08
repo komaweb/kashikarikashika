@@ -47,7 +47,7 @@ function createSettlementItem(item){
 
         ...item,
 
-        title:"✔ カシカリナシカ",
+        title:"カシカリナシカ",
 
         subtitle:"貸し借りを精算しました",
 
