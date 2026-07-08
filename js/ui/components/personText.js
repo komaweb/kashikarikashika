@@ -1,22 +1,42 @@
 import { createPersonView } from "./personView.js";
 
-export function createPersonText(person,text){
+export function createPersonText(
+
+    person,
+
+    text,
+
+    options={}
+
+){
 
     const element = document.createElement("div");
 
-    element.className = "history-detail";
+    element.classList.add(
+
+        "person-text"
+
+    );
 
     element.appendChild(
 
-        createPersonView(person)
+        createPersonView(
+
+            person,
+
+            options
+
+        )
 
     );
 
-    element.append(
+    const label = document.createElement("div");
 
-        text
+    label.className = "person-label";
 
-    );
+    label.textContent = text;
+
+    element.appendChild(label);
 
     return element;
 
