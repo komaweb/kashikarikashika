@@ -6,9 +6,29 @@ import {
 
 } from "../settings.js";
 
+const COLORS=[
+
+    "#ef4444",
+
+    "#f97316",
+
+    "#eab308",
+
+    "#22c55e",
+
+    "#06b6d4",
+
+    "#3b82f6",
+
+    "#8b5cf6",
+
+    "#ec4899"
+
+];
+
 export function initializeSettingsView(refresh){
 
-    const elements = {
+    const elements={
 
         selfName:
             document.getElementById("selfName"),
@@ -25,6 +45,9 @@ export function initializeSettingsView(refresh){
         selfDeleteButton:
             document.getElementById("selfIconDeleteButton"),
 
+        selfPalette:
+            document.getElementById("selfColorPalette"),
+
         partnerName:
             document.getElementById("partnerName"),
 
@@ -40,12 +63,32 @@ export function initializeSettingsView(refresh){
         partnerDeleteButton:
             document.getElementById("partnerIconDeleteButton"),
 
-        saveButton:
-            document.getElementById("saveSettingsButton")
+        partnerPalette:
+            document.getElementById("partnerColorPalette")
 
     };
 
     loadSettings(elements);
+
+    bindName(
+
+        elements.selfName,
+
+        "self",
+
+        refresh
+
+    );
+
+    bindName(
+
+        elements.partnerName,
+
+        "partner",
+
+        refresh
+
+    );
 
     bindImagePicker(
 
@@ -57,7 +100,9 @@ export function initializeSettingsView(refresh){
 
         elements.selfDeleteButton,
 
-        "self"
+        "self",
+
+        refresh
 
     );
 
@@ -71,23 +116,29 @@ export function initializeSettingsView(refresh){
 
         elements.partnerDeleteButton,
 
-        "partner"
+        "partner",
+
+        refresh
 
     );
 
-    elements.saveButton.addEventListener(
+    createColorPalette(
 
-        "click",
+        elements.selfPalette,
 
-        ()=>{
+        "self",
 
-            saveNames(elements);
+        refresh
 
-            refresh();
+    );
 
-            alert("保存しました！");
+    createColorPalette(
 
-        }
+        elements.partnerPalette,
+
+        "partner",
+
+        refresh
 
     );
 
@@ -95,31 +146,19 @@ export function initializeSettingsView(refresh){
 
 function loadSettings(elements){
 
-    elements.selfName.value =
-        settings.self.name;
+    elements.selfName.value=settings.self.name;
 
-    elements.partnerName.value =
-        settings.partner.name;
+    elements.partnerName.value=settings.partner.name;
 
     if(settings.self.image){
 
-        elements.selfPreview.src =
-            settings.self.image;
-
-    }else{
-
-        elements.selfPreview.removeAttribute("src");
+        elements.selfPreview.src=settings.self.image;
 
     }
 
     if(settings.partner.image){
 
-        elements.partnerPreview.src =
-            settings.partner.image;
-
-    }else{
-
-        elements.partnerPreview.removeAttribute("src");
+        elements.partnerPreview.src=settings.partner.image;
 
     }
 
@@ -141,6 +180,50 @@ function loadSettings(elements){
 
 }
 
+function bindName(
+
+    input,
+
+    target,
+
+    refresh
+
+){
+
+    input.addEventListener(
+
+        "change",
+
+        ()=>{
+
+            updateSettings({
+
+                [target]:{
+
+                    name:
+
+                    input.value.trim()
+
+                    ||
+
+                    (target==="self"
+
+                    ?"自分"
+
+                    :"相手")
+
+                }
+
+            });
+
+            refresh();
+
+        }
+
+    );
+
+}
+
 function bindImagePicker(
 
     button,
@@ -151,7 +234,9 @@ function bindImagePicker(
 
     deleteButton,
 
-    target
+    target,
+
+    refresh
 
 ){
 
@@ -159,11 +244,7 @@ function bindImagePicker(
 
         "click",
 
-        ()=>{
-
-            input.click();
-
-        }
+        ()=>input.click()
 
     );
 
@@ -205,6 +286,8 @@ function bindImagePicker(
 
             });
 
+            refresh();
+
         }
 
     );
@@ -237,6 +320,8 @@ function bindImagePicker(
 
             });
 
+            refresh();
+
         }
 
     );
@@ -251,37 +336,105 @@ function updateDeleteButton(
 
 ){
 
-    if(preview.hasAttribute("src")){
+    button.style.display=
 
-        button.style.display="block";
+        preview.hasAttribute("src")
 
-    }else{
+        ?"block"
 
-        button.style.display="none";
-
-    }
+        :"none";
 
 }
 
-function saveNames(elements){
+function createColorPalette(
 
-    updateSettings({
+    container,
 
-        self:{
+    target,
 
-            name:
-                elements.selfName.value.trim() || "自分"
+    refresh
 
-        },
+){
 
-        partner:{
+    container.replaceChildren();
 
-            name:
-                elements.partnerName.value.trim() || "相手"
+    COLORS.forEach(
+
+        (color)=>{
+
+            const button=
+
+                document.createElement(
+
+                    "button"
+
+                );
+
+            button.type="button";
+
+            button.className=
+
+                "color-button";
+
+            button.style.background=
+
+                color;
+
+            if(
+
+                settings[target].color===color
+
+            ){
+
+                button.classList.add(
+
+                    "active"
+
+                );
+
+            }
+
+            button.addEventListener(
+
+                "click",
+
+                ()=>{
+
+                    updateSettings({
+
+                        [target]:{
+
+                            color:color
+
+                        }
+
+                    });
+
+                    refresh();
+
+                    createColorPalette(
+
+                        container,
+
+                        target,
+
+                        refresh
+
+                    );
+
+                }
+
+            );
+
+            container.appendChild(
+
+                button
+
+            );
 
         }
 
-    });
+    );
 
 }
 
@@ -289,11 +442,15 @@ function resizeImage(file){
 
     return new Promise((resolve)=>{
 
-        const reader=new FileReader();
+        const reader=
+
+            new FileReader();
 
         reader.onload=()=>{
 
-            const image=new Image();
+            const image=
+
+                new Image();
 
             image.onload=()=>{
 
@@ -313,7 +470,11 @@ function resizeImage(file){
 
                 const context=
 
-                    canvas.getContext("2d");
+                    canvas.getContext(
+
+                        "2d"
+
+                    );
 
                 const scale=Math.max(
 
@@ -367,7 +528,9 @@ function resizeImage(file){
 
             };
 
-            image.src=reader.result;
+            image.src=
+
+                reader.result;
 
         };
 
