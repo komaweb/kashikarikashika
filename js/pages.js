@@ -1,3 +1,4 @@
+import { initializeNavigation } from "./ui/pageNavigation.js";
 import { showPage } from "./ui/navigation.js";
 
 import { updateBalance } from "./ui/balance.js";
@@ -51,7 +52,13 @@ function initializeMoneyPage(){
 
     );
 
-    initializeMoneyNavigation();
+    initializeNavigation({
+
+        history:openHistoryPage,
+
+        settings:openSettingsPage
+
+    });
 
 }
 
@@ -59,7 +66,13 @@ function initializeHistoryPage(){
 
     refreshHistoryPage();
 
-    initializeHistoryNavigation();
+    initializeNavigation({
+
+        money:openMoneyPage,
+
+        settings:openSettingsPage
+
+    });
 
 }
 
@@ -71,7 +84,13 @@ function initializeSettingsPage(){
 
     );
 
-    initializeSettingsNavigation();
+    initializeNavigation({
+
+        money:openMoneyPage,
+
+        history:openHistoryPage
+
+    });
 
 }
 
@@ -116,119 +135,5 @@ function refreshHistoryPage(){
         refresh:refreshHistoryPage
 
     });
-
-}
-
-function initializeMoneyNavigation(){
-
-    bindNavigation({
-
-        history:true,
-
-        settings:true
-
-    });
-
-}
-
-function initializeHistoryNavigation(){
-
-    bindNavigation({
-
-        money:true,
-
-        settings:true
-
-    });
-
-}
-
-function initializeSettingsNavigation(){
-
-    bindNavigation({
-
-        money:true,
-
-        history:true
-
-    });
-
-}
-
-function bindNavigation({
-
-    money=false,
-
-    history=false,
-
-    settings=false
-
-}){
-
-    if(money){
-
-        const button = document.getElementById(
-
-            "moneyTab"
-
-        );
-
-        if(button){
-
-            button.addEventListener(
-
-                "click",
-
-                openMoneyPage
-
-            );
-
-        }
-
-    }
-
-    if(history){
-
-        const button = document.getElementById(
-
-            "historyTab"
-
-        );
-
-        if(button){
-
-            button.addEventListener(
-
-                "click",
-
-                openHistoryPage
-
-            );
-
-        }
-
-    }
-
-    if(settings){
-
-        const button = document.getElementById(
-
-            "settingsTab"
-
-        );
-
-        if(button){
-
-            button.addEventListener(
-
-                "click",
-
-                openSettingsPage
-
-            );
-
-        }
-
-    }
 
 }
