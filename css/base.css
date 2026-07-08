@@ -207,20 +207,20 @@ header{
 
     display:flex;
 
-    justify-content:center;
-
     align-items:center;
+
+    justify-content:center;
 
 }
 
 .header-logo{
 
-    width:280px;
+    display:block;
 
-    max-width:85%;
+    width:260px;
+
+    max-width:90%;
 
     height:auto;
-
-    display:block;
 
 }
