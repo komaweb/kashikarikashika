@@ -1,23 +1,13 @@
-import { createPersonView } from "./personView.js";
+import { createPersonText } from "./personText.js";
 
 export function createPersonLabel(person){
 
-    const element = document.createElement("div");
+    return createPersonText(
 
-    element.className = "history-detail";
-
-    element.appendChild(
-
-        createPersonView(person)
-
-    );
-
-    element.append(
+        person,
 
         "が支払いました"
 
     );
-
-    return element;
 
 }
