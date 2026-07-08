@@ -4,9 +4,9 @@
 
 .balance-card{
 
-    transition:var(--transition);
-
     text-align:center;
+
+    transition:var(--transition);
 
 }
 
@@ -36,13 +36,13 @@
 
 .balance-label{
 
-    margin-bottom:14px;
-
-    opacity:.9;
+    margin-bottom:12px;
 
     font-size:15px;
 
     font-weight:600;
+
+    opacity:.9;
 
 }
 
@@ -52,13 +52,15 @@
 
     justify-content:center;
 
-    margin-top:10px;
+    align-items:center;
+
+    min-height:150px;
 
 }
 
 #balanceAmount{
 
-    margin-top:24px;
+    margin-top:18px;
 
     font-size:48px;
 
@@ -66,23 +68,21 @@
 
     line-height:1;
 
+    text-align:center;
+
 }
 
 .balance-card .button-settlement{
 
     margin-top:28px;
 
-    background:#fff;
-
-    color:#222;
-
 }
 
-.balance-card .button-settlement:disabled{
+.balance-none .button-settlement{
 
-    background:#ececec;
+    background:#222;
 
-    color:#999;
+    color:#fff;
 
 }
 
@@ -100,7 +100,7 @@
 
     justify-content:center;
 
-    gap:16px;
+    gap:12px;
 
 }
 
@@ -109,6 +109,8 @@
     font-size:22px;
 
     font-weight:700;
+
+    line-height:1.2;
 
     text-align:center;
 
@@ -130,8 +132,6 @@
 
     align-items:center;
 
-    justify-content:flex-start;
-
     gap:10px;
 
 }
@@ -150,17 +150,21 @@
 
 }
 
-.person-icon{
+.person-icon,
 
-    width:100%;
-
-    height:100%;
+.person-placeholder{
 
     border-radius:50%;
 
+    flex-shrink:0;
+
+}
+
+.person-icon{
+
     object-fit:cover;
 
-    flex-shrink:0;
+    background:#fff;
 
 }
 
@@ -178,9 +182,13 @@
 
 }
 
-/* ---------- Small ---------- */
+/*==================================================
+    Person Size
+==================================================*/
 
-.person-small .person-icon{
+.person-small .person-icon,
+
+.person-small .person-placeholder{
 
     width:30px;
 
@@ -190,84 +198,38 @@
 
 .person-small .person-name{
 
-    font-size:18px;
+    font-size:17px;
 
 }
 
-/* ---------- Medium ---------- */
+.person-medium .person-icon,
 
-.person-medium .person-icon{
+.person-medium .person-placeholder{
 
-    width:58px;
+    width:56px;
 
-    height:58px;
+    height:56px;
 
 }
 
 .person-medium .person-name{
 
-    font-size:24px;
+    font-size:22px;
 
 }
 
-/* ---------- Large ---------- */
+.person-large .person-icon,
 
-.person-large .person-icon{
+.person-large .person-placeholder{
 
-    width:82px;
+    width:84px;
 
-    height:82px;
+    height:84px;
 
 }
 
 .person-large .person-name{
 
     font-size:34px;
-
-}
-
-/*==================================================
-    Payment Button
-==================================================*/
-
-.button-row{
-
-    display:grid;
-
-    grid-template-columns:1fr 1fr;
-
-    gap:16px;
-
-}
-
-.button-self,
-
-.button-partner{
-
-    display:flex;
-
-    flex-direction:column;
-
-    justify-content:center;
-
-    align-items:center;
-
-    gap:10px;
-
-    min-height:180px;
-
-}
-
-.payment-button-label{
-
-    margin-top:6px;
-
-    font-size:18px;
-
-    font-weight:600;
-
-    line-height:1.2;
-
-    text-align:center;
 
 }
