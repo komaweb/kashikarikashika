@@ -10,6 +10,8 @@ const defaultSettings = {
 
         icon:"😳",
 
+        image:null,
+
         color:"#4F8EF7"
 
     },
@@ -19,6 +21,8 @@ const defaultSettings = {
         name:"相手",
 
         icon:"🐱",
+
+        image:null,
 
         color:"#FF6B81"
 
