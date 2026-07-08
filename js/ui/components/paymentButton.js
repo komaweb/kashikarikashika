@@ -36,7 +36,7 @@ export function createPaymentButton(
 
     label.textContent =
 
-        `${person.name}が支払った`;
+        "が支払った";
 
     button.appendChild(label);
 
