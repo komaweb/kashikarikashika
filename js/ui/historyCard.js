@@ -17,27 +17,45 @@ export function createHistoryCard(item,onDelete){
 
         case "settlement":
 
-    item.title = "✔ 精算";
+            return createPaymentCard(
 
-    item.payer = "self";
+                createSettlementItem(item),
 
-    return createPaymentCard(item,onDelete);
+                onDelete
+
+            );
+
         case "payment":
 
         default:
 
-            return createPaymentCard(item,onDelete);
+            return createPaymentCard(
+
+                item,
+
+                onDelete
+
+            );
 
     }
 
 }
 
-function createPaymentCard(item,onDelete){
+function createSettlementItem(item){
 
-    const person =
-        item.payer === "self"
-            ? settings.self
-            : settings.partner;
+    return{
+
+        ...item,
+
+        title:"✔ 精算",
+
+        payer:null
+
+    };
+
+}
+
+function createPaymentCard(item,onDelete){
 
     const card = createCard("history-card");
 
@@ -53,41 +71,42 @@ function createPaymentCard(item,onDelete){
 
     append(card, createHistorySubtitle(item));
 
-    append(card, createPersonLabel(person));
+    if(item.payer){
+
+        const person =
+            item.payer==="self"
+                ? settings.self
+                : settings.partner;
+
+        append(
+
+            card,
+
+            createPersonLabel(person)
+
+        );
+
+    }
 
     append(card, createMoney(item.amount));
 
     append(card, createHistoryDeletedInfo(item));
 
-    append(card, createHistoryDeleteButton(item,onDelete));
+    append(
+
+        card,
+
+        createHistoryDeleteButton(
+
+            item,
+
+            onDelete
+
+        )
+
+    );
 
     return card;
-
-}
-
-function createSettlementCard(item){
-
-    const card = createCard("history-card settlement-card");
-
-    append(card, createHistoryDate(item.createdAt));
-
-    append(card, createSettlementTitle());
-
-    append(card, createMoney(item.amount));
-
-    return card;
-
-}
-
-function createSettlementTitle(){
-
-    const title = document.createElement("div");
-
-    title.className = "history-title";
-
-    title.textContent = "✔ 精算";
-
-    return title;
 
 }
 
