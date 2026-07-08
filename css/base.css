@@ -1,6 +1,635 @@
+/*==================================================
+    Theme
+==================================================*/
+
+:root{
+
+    --bg:#f4f5f7;
+
+    --card:#ffffff;
+
+    --text:#1f2937;
+
+    --sub:#6b7280;
+
+    --border:#e5e7eb;
+
+    --shadow:0 6px 18px rgba(15,23,42,.08);
+
+    --self:#4F8EF7;
+
+    --partner:#FF6B81;
+
+    --danger:#ef4444;
+
+    --warning:#f59e0b;
+
+    --radius:20px;
+
+    --radius-small:12px;
+
+    --transition:.25s;
+
+    --header-height:72px;
+
+    --max-width:520px;
+
+}
+
+/*==================================================
+    Reset
+==================================================*/
+
+*{
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+body{
+
+    background:var(--bg);
+
+    color:var(--text);
+
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Helvetica Neue",
+        sans-serif;
+
+}
+
+.app{
+
+    width:min(100%,var(--max-width));
+
+    margin:auto;
+
+    padding:24px 18px 80px;
+
+}
+
+/*==================================================
+    Header
+==================================================*/
+
+header{
+
+    height:var(--header-height);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+}
+
+header h1{
+
+    font-size:30px;
+
+    font-weight:800;
+
+    letter-spacing:.05em;
+
+}
+
+/*==================================================
+    Card
+==================================================*/
+
+.card{
+
+    background:var(--card);
+
+    border-radius:var(--radius);
+
+    border:1px solid var(--border);
+
+    box-shadow:var(--shadow);
+
+    padding:22px;
+
+}
+
+/*==================================================
+    Form
+==================================================*/
+
+.form-group{
+
+    margin-bottom:18px;
+
+}
+
+label{
+
+    display:block;
+
+    margin-bottom:8px;
+
+    font-size:14px;
+
+    color:var(--sub);
+
+}
+
+input{
+
+    width:100%;
+
+    padding:14px 16px;
+
+    border:1px solid var(--border);
+
+    border-radius:14px;
+
+    background:white;
+
+    font-size:18px;
+
+    transition:var(--transition);
+
+}
+
+input:focus{
+
+    outline:none;
+
+    border-color:var(--self);
+
+    box-shadow:0 0 0 4px rgba(79,142,247,.15);
+
+}
+
+/*==================================================
+    Button
+==================================================*/
+
+button{
+
+    border:none;
+
+    background:none;
+
+    font:inherit;
+
+    cursor:pointer;
+
+}
+
+.button{
+
+    width:100%;
+
+    padding:16px;
+
+    border-radius:16px;
+
+    color:white;
+
+    font-size:17px;
+
+    font-weight:700;
+
+    transition:var(--transition);
+
+}
+
+.button:hover{
+
+    transform:translateY(-2px);
+
+}
+
+.button:active{
+
+    transform:scale(.98);
+
+}
+
+.button-self{
+
+    background:var(--self);
+
+}
+
+.button-partner{
+
+    background:var(--partner);
+
+}
+
+.button-warning{
+
+    background:var(--warning);
+
+}
+
+.button-danger{
+
+    background:var(--danger);
+
+}
+
+/*==================================================
+    Responsive
+==================================================*/
+
+@media (max-width:420px){
+
+    .app{
+
+        padding:20px 14px 80px;
+
+    }
+
+}
+
+.button-settlement{
+
+    width:100%;
+
+    margin-top:20px;
+
+    padding:14px 20px;
+
+    border:none;
+
+    border-radius:16px;
+
+    background:#222;
+
+    color:#fff;
+
+    font-size:17px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+}
+
+.button-settlement:hover{
+
+    opacity:.9;
+
+}
+
+.button-settlement:disabled{
+
+    background:#d9d9d9;
+
+    color:#888;
+
+    cursor:not-allowed;
+
+}
+
+
+.balance-self{
+
+    background:#f7f0ff;
+
+}
+
+.balance-partner{
+
+    background:#eef9ef;
+
+}
+
+.balance-none{
+
+    background:white;
+
+}
+
+
+/*==================================
+    Balance Card
+==================================*/
+
+.balance-card{
+
+    transition:.2s;
+
+}
+
+.balance-self{
+
+    background:var(--self-color);
+
+    color:#fff;
+
+}
+
+.balance-partner{
+
+    background:var(--partner-color);
+
+    color:#fff;
+
+}
+
+.balance-none{
+
+    background:#fff;
+
+    color:inherit;
+
+}
+
+.balance-card .balance-label{
+
+    color:inherit;
+
+    opacity:.85;
+
+}
+
+.balance-card h2{
+
+    color:inherit !important;
+
+}
+
+.balance-card #balanceAmount{
+
+    color:inherit;
+
+}
+
+.balance-card .button-settlement{
+
+    margin-top:24px;
+
+    background:#fff;
+
+    color:#222;
+
+    border:none;
+
+}
+
+.balance-card .button-settlement:disabled{
+
+    background:#eee;
+
+    color:#999;
+
+}
+
+
+/*==================================
+    Person View
+==================================*/
+
+.person-view{
+
+    display:flex;
+
+    align-items:center;
+
+}
+
+.person-row{
+
+    flex-direction:row;
+
+    gap:10px;
+
+}
+
+.person-column{
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    text-align:center;
+
+    gap:8px;
+
+}
+
+.person-icon{
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    flex-shrink:0;
+
+}
+
+.person-placeholder{
+
+    border:2px solid rgba(255,255,255,.35);
+
+}
+
+.person-name{
+
+    font-weight:700;
+
+}
+
+/*========== Small ==========*/
+
+.person-small .person-icon{
+
+    width:28px;
+
+    height:28px;
+
+}
+
+.person-small .person-name{
+
+    font-size:15px;
+
+}
+
+/*========== Medium ==========*/
+
+.person-medium .person-icon{
+
+    width:42px;
+
+    height:42px;
+
+}
+
+.person-medium .person-name{
+
+    font-size:18px;
+
+}
+
+/*========== Large ==========*/
+
+.person-large .person-icon{
+
+    width:64px;
+
+    height:64px;
+
+}
+
+.person-large .person-name{
+
+    font-size:28px;
+
+}
+
+/*==================================
+    Person
+==================================*/
+
+.person-view{
+
+    display:flex;
+
+}
+
+.person-row{
+
+    flex-direction:row;
+
+    align-items:center;
+
+    justify-content:flex-start;
+
+    gap:10px;
+
+}
+
+.person-column{
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    gap:10px;
+
+}
+
+.person-icon{
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    flex-shrink:0;
+
+}
+
+.person-placeholder{
+
+    border:2px solid rgba(255,255,255,.35);
+
+}
+
+.person-name{
+
+    font-weight:700;
+
+    line-height:1.2;
+
+}
+
+/* ===== Small ===== */
+
+.person-small .person-icon{
+
+    width:28px;
+
+    height:28px;
+
+}
+
+.person-small .person-name{
+
+    font-size:18px;
+
+}
+
+/* ===== Medium ===== */
+
+.person-medium .person-icon{
+
+    width:52px;
+
+    height:52px;
+
+}
+
+.person-medium .person-name{
+
+    font-size:22px;
+
+}
+
+/* ===== Large ===== */
+
+.person-large .person-icon{
+
+    width:72px;
+
+    height:72px;
+
+}
+
+.person-large .person-name{
+
+    font-size:34px;
+
+}
+
+
+.balance-person{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:14px;
+
+}
+
+.balance-person-label{
+
+    font-size:24px;
+
+    font-weight:700;
+
+    text-align:center;
+
+}
+
 import {
     addHistory,
-    addSettlement,
+    addSettlement
+} from "../historyStore.js";
+
+import {
     getHistory
 } from "../historyStore.js";
 
@@ -10,15 +639,7 @@ import {
 
 import { formatMoney } from "./format.js";
 
-import { settings } from "../settings.js";
-
-import { createPaymentButton }
-
-    from "./components/paymentButton.js";
-
 export function initializeButtons(refresh){
-
-    initializePaymentButtons();
 
     bindPaymentButton(
 
@@ -43,34 +664,6 @@ export function initializeButtons(refresh){
     bindSettlementButton(
 
         refresh
-
-    );
-
-}
-
-function initializePaymentButtons(){
-
-    createPaymentButton(
-
-        document.getElementById(
-
-            "selfButton"
-
-        ),
-
-        settings.self
-
-    );
-
-    createPaymentButton(
-
-        document.getElementById(
-
-            "partnerButton"
-
-        ),
-
-        settings.partner
 
     );
 
@@ -254,11 +847,9 @@ ${formatMoney(Math.abs(balance))} の貸し借りを精算済みとして記録�
 
     }
 
-    addSettlement(
-
-        balance
-
-    );
+addSettlement(
+    balance
+);
 
     refresh();
 
