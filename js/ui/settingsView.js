@@ -123,6 +123,22 @@ function loadSettings(elements){
 
     }
 
+    updateDeleteButton(
+
+        elements.selfPreview,
+
+        elements.selfDeleteButton
+
+    );
+
+    updateDeleteButton(
+
+        elements.partnerPreview,
+
+        elements.partnerDeleteButton
+
+    );
+
 }
 
 function bindImagePicker(
@@ -171,6 +187,14 @@ function bindImagePicker(
 
             preview.src=image;
 
+            updateDeleteButton(
+
+                preview,
+
+                deleteButton
+
+            );
+
             updateSettings({
 
                 [target]:{
@@ -195,6 +219,14 @@ function bindImagePicker(
 
             input.value="";
 
+            updateDeleteButton(
+
+                preview,
+
+                deleteButton
+
+            );
+
             updateSettings({
 
                 [target]:{
@@ -208,6 +240,26 @@ function bindImagePicker(
         }
 
     );
+
+}
+
+function updateDeleteButton(
+
+    preview,
+
+    button
+
+){
+
+    if(preview.hasAttribute("src")){
+
+        button.style.display="block";
+
+    }else{
+
+        button.style.display="none";
+
+    }
 
 }
 
