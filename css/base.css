@@ -20,6 +20,10 @@
 
     --partner:#FF6B81;
 
+    --self-color:#4F8EF7;
+
+    --partner-color:#FF6B81;
+
     --danger:#ef4444;
 
     --warning:#f59e0b;
@@ -57,12 +61,38 @@ body{
     color:var(--text);
 
     font-family:
+
         -apple-system,
+
         BlinkMacSystemFont,
+
         "Helvetica Neue",
+
         sans-serif;
 
 }
+
+button{
+
+    border:none;
+
+    background:none;
+
+    font:inherit;
+
+    cursor:pointer;
+
+}
+
+input{
+
+    font:inherit;
+
+}
+
+/*==================================================
+    App
+==================================================*/
 
 .app{
 
@@ -70,7 +100,7 @@ body{
 
     margin:auto;
 
-    padding:24px 18px 80px;
+    padding:24px 18px 96px;
 
 }
 
@@ -108,13 +138,15 @@ header h1{
 
     background:var(--card);
 
-    border-radius:var(--radius);
-
     border:1px solid var(--border);
+
+    border-radius:var(--radius);
 
     box-shadow:var(--shadow);
 
     padding:22px;
+
+    margin-bottom:20px;
 
 }
 
@@ -150,7 +182,7 @@ input{
 
     border-radius:14px;
 
-    background:white;
+    background:#fff;
 
     font-size:18px;
 
@@ -162,41 +194,25 @@ input:focus{
 
     outline:none;
 
-    border-color:var(--self);
+    border-color:var(--self-color);
 
     box-shadow:0 0 0 4px rgba(79,142,247,.15);
 
 }
 
+
+
 /*==================================================
     Button
 ==================================================*/
-
-button{
-
-    border:none;
-
-    background:none;
-
-    font:inherit;
-
-    cursor:pointer;
-
-}
 
 .button{
 
     width:100%;
 
-    padding:16px;
+    padding:18px;
 
-    border-radius:16px;
-
-    color:white;
-
-    font-size:17px;
-
-    font-weight:700;
+    border-radius:18px;
 
     transition:var(--transition);
 
@@ -216,71 +232,35 @@ button{
 
 .button-self{
 
-    background:var(--self);
+    background:#fff;
+
+    color:var(--text);
+
+    border:2px solid var(--self-color);
 
 }
 
 .button-partner{
 
-    background:var(--partner);
+    background:#fff;
 
-}
+    color:var(--text);
 
-.button-warning{
-
-    background:var(--warning);
-
-}
-
-.button-danger{
-
-    background:var(--danger);
-
-}
-
-/*==================================================
-    Responsive
-==================================================*/
-
-@media (max-width:420px){
-
-    .app{
-
-        padding:20px 14px 80px;
-
-    }
+    border:2px solid var(--partner-color);
 
 }
 
 .button-settlement{
 
-    width:100%;
-
-    margin-top:20px;
-
-    padding:14px 20px;
-
-    border:none;
-
-    border-radius:16px;
+    margin-top:24px;
 
     background:#222;
 
     color:#fff;
 
-    font-size:17px;
+    font-size:18px;
 
     font-weight:700;
-
-    cursor:pointer;
-
-    transition:.2s;
-
-}
-
-.button-settlement:hover{
-
-    opacity:.9;
 
 }
 
@@ -294,33 +274,13 @@ button{
 
 }
 
-
-.balance-self{
-
-    background:#f7f0ff;
-
-}
-
-.balance-partner{
-
-    background:#eef9ef;
-
-}
-
-.balance-none{
-
-    background:white;
-
-}
-
-
-/*==================================
-    Balance Card
-==================================*/
+/*==================================================
+    Balance
+==================================================*/
 
 .balance-card{
 
-    transition:.2s;
+    transition:var(--transition);
 
 }
 
@@ -344,156 +304,63 @@ button{
 
     background:#fff;
 
-    color:inherit;
+    color:var(--text);
 
 }
 
-.balance-card .balance-label{
+.balance-label{
 
-    color:inherit;
+    opacity:.9;
 
-    opacity:.85;
+    margin-bottom:14px;
 
 }
 
 .balance-card h2{
 
-    color:inherit !important;
-
-}
-
-.balance-card #balanceAmount{
-
     color:inherit;
 
 }
 
-.balance-card .button-settlement{
+#balanceAmount{
 
-    margin-top:24px;
+    margin-top:18px;
 
-    background:#fff;
+    font-size:46px;
 
-    color:#222;
-
-    border:none;
-
-}
-
-.balance-card .button-settlement:disabled{
-
-    background:#eee;
-
-    color:#999;
-
-}
-
-
-/*==================================
-    Person View
-==================================*/
-
-.person-view{
-
-    display:flex;
-
-    align-items:center;
-
-}
-
-.person-row{
-
-    flex-direction:row;
-
-    gap:10px;
-
-}
-
-.person-column{
-
-    flex-direction:column;
-
-    justify-content:center;
+    font-weight:800;
 
     text-align:center;
 
-    gap:8px;
+}
+
+.balance-person{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:16px;
 
 }
 
-.person-icon{
+.balance-person-label{
 
-    border-radius:50%;
-
-    object-fit:cover;
-
-    flex-shrink:0;
-
-}
-
-.person-placeholder{
-
-    border:2px solid rgba(255,255,255,.35);
-
-}
-
-.person-name{
+    font-size:22px;
 
     font-weight:700;
 
-}
-
-/*========== Small ==========*/
-
-.person-small .person-icon{
-
-    width:28px;
-
-    height:28px;
+    text-align:center;
 
 }
 
-.person-small .person-name{
-
-    font-size:15px;
-
-}
-
-/*========== Medium ==========*/
-
-.person-medium .person-icon{
-
-    width:42px;
-
-    height:42px;
-
-}
-
-.person-medium .person-name{
-
-    font-size:18px;
-
-}
-
-/*========== Large ==========*/
-
-.person-large .person-icon{
-
-    width:64px;
-
-    height:64px;
-
-}
-
-.person-large .person-name{
-
-    font-size:28px;
-
-}
-
-/*==================================
+/*==================================================
     Person
-==================================*/
+==================================================*/
 
 .person-view{
 
@@ -507,8 +374,6 @@ button{
 
     align-items:center;
 
-    justify-content:flex-start;
-
     gap:10px;
 
 }
@@ -521,9 +386,9 @@ button{
 
     justify-content:center;
 
-    text-align:center;
-
     gap:10px;
+
+    text-align:center;
 
 }
 
@@ -551,13 +416,13 @@ button{
 
 }
 
-/* ===== Small ===== */
+/* ---------- Small ---------- */
 
 .person-small .person-icon{
 
-    width:28px;
+    width:30px;
 
-    height:28px;
+    height:30px;
 
 }
 
@@ -567,29 +432,29 @@ button{
 
 }
 
-/* ===== Medium ===== */
+/* ---------- Medium ---------- */
 
 .person-medium .person-icon{
 
-    width:52px;
+    width:58px;
 
-    height:52px;
+    height:58px;
 
 }
 
 .person-medium .person-name{
 
-    font-size:22px;
+    font-size:24px;
 
 }
 
-/* ===== Large ===== */
+/* ---------- Large ---------- */
 
 .person-large .person-icon{
 
-    width:72px;
+    width:82px;
 
-    height:72px;
+    height:82px;
 
 }
 
@@ -599,8 +464,13 @@ button{
 
 }
 
+/*==================================================
+    Payment Button
+==================================================*/
 
-.balance-person{
+.button-self,
+
+.button-partner{
 
     display:flex;
 
@@ -610,247 +480,238 @@ button{
 
     justify-content:center;
 
-    gap:14px;
+    gap:10px;
+
+    min-height:170px;
 
 }
 
-.balance-person-label{
+.payment-button-label{
 
-    font-size:24px;
+    margin-top:6px;
 
-    font-weight:700;
+    font-size:18px;
+
+    font-weight:600;
+
+    line-height:1.2;
 
     text-align:center;
 
 }
 
-import {
-    addHistory,
-    addSettlement
-} from "../historyStore.js";
 
-import {
-    getHistory
-} from "../historyStore.js";
 
-import {
-    calculateBalance
-} from "../calculator.js";
+/*==================================================
+    History
+==================================================*/
 
-import { formatMoney } from "./format.js";
+.history-section{
 
-export function initializeButtons(refresh){
-
-    bindPaymentButton(
-
-        "selfButton",
-
-        "self",
-
-        refresh
-
-    );
-
-    bindPaymentButton(
-
-        "partnerButton",
-
-        "partner",
-
-        refresh
-
-    );
-
-    bindSettlementButton(
-
-        refresh
-
-    );
+    margin-top:24px;
 
 }
 
-function bindPaymentButton(
+.history-section h2{
 
-    id,
+    margin-bottom:16px;
 
-    payer,
+    font-size:22px;
 
-    refresh
-
-){
-
-    const button = document.getElementById(id);
-
-    if(!button){
-
-        return;
-
-    }
-
-    button.addEventListener(
-
-        "click",
-
-        ()=>{
-
-            registerPayment(
-
-                payer,
-
-                refresh
-
-            );
-
-        }
-
-    );
+    font-weight:800;
 
 }
 
-function bindSettlementButton(refresh){
+.history-card{
 
-    const button = document.getElementById(
+    display:flex;
 
-        "settlementButton"
+    flex-direction:column;
 
-    );
+    gap:12px;
 
-    if(!button){
+    margin-bottom:16px;
 
-        return;
+    padding:18px;
 
-    }
+    background:#fff;
 
-    button.addEventListener(
+    border:1px solid var(--border);
 
-        "click",
+    border-radius:18px;
 
-        ()=>{
-
-            registerSettlement(
-
-                refresh
-
-            );
-
-        }
-
-    );
+    box-shadow:var(--shadow);
 
 }
 
-function registerPayment(
+.history-card-deleted{
 
-    payer,
-
-    refresh
-
-){
-
-    const titleInput =
-
-        document.getElementById(
-
-            "titleInput"
-
-        );
-
-    const amountInput =
-
-        document.getElementById(
-
-            "amountInput"
-
-        );
-
-    const title =
-
-        titleInput.value.trim();
-
-    const amount =
-
-        Number(
-
-            amountInput.value
-
-        );
-
-    if(amount<=0){
-
-        alert(
-
-            "金額を入力してください。"
-
-        );
-
-        return;
-
-    }
-
-    addHistory({
-
-        id:crypto.randomUUID(),
-
-        payer,
-
-        title,
-
-        amount,
-
-        createdAt:new Date()
-
-    });
-
-    titleInput.value="";
-
-    amountInput.value="";
-
-    refresh();
+    opacity:.7;
 
 }
 
-function registerSettlement(refresh){
+.history-date{
 
-    const balance = calculateBalance(
+    font-size:13px;
 
-        getHistory()
+    color:var(--sub);
 
-    );
+}
 
-    if(balance===0){
+.history-title{
 
-        alert(
+    font-size:22px;
 
-            "貸し借りがありません。"
+    font-weight:700;
 
-        );
+}
 
-        return;
+.history-subtitle{
+
+    color:var(--sub);
+
+}
+
+.history-detail{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:flex-start;
+
+}
+
+.deleted-title{
+
+    color:var(--danger);
+
+}
+
+.history-money{
+
+    font-size:28px;
+
+    font-weight:800;
+
+}
+
+.history-delete-info{
+
+    color:var(--sub);
+
+    font-size:14px;
+
+}
+
+/*==================================================
+    Bottom Navigation
+==================================================*/
+
+.bottom-navigation{
+
+    position:fixed;
+
+    left:0;
+
+    right:0;
+
+    bottom:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:12px;
+
+    padding:12px 18px calc(env(safe-area-inset-bottom) + 12px);
+
+    background:rgba(255,255,255,.92);
+
+    backdrop-filter:blur(12px);
+
+    border-top:1px solid var(--border);
+
+}
+
+.nav-button{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:4px;
+
+    min-width:88px;
+
+    padding:10px 16px;
+
+    border-radius:14px;
+
+    color:var(--sub);
+
+    transition:var(--transition);
+
+}
+
+.nav-button.active{
+
+    background:#fff;
+
+    box-shadow:var(--shadow);
+
+    color:var(--text);
+
+}
+
+.nav-icon{
+
+    font-size:22px;
+
+}
+
+.nav-label{
+
+    font-size:12px;
+
+    font-weight:700;
+
+}
+
+/*==================================================
+    Responsive
+==================================================*/
+
+@media (max-width:420px){
+
+    .app{
+
+        padding:20px 14px 96px;
 
     }
 
-    const message =
+    .person-large .person-icon{
 
-`精算を記録しますか？
+        width:72px;
 
-${formatMoney(Math.abs(balance))} の貸し借りを精算済みとして記録します。`;
-
-    const result = confirm(
-
-        message
-
-    );
-
-    if(!result){
-
-        return;
+        height:72px;
 
     }
 
-addSettlement(
-    balance
-);
+    .person-large .person-name{
 
-    refresh();
+        font-size:30px;
+
+    }
+
+    #balanceAmount{
+
+        font-size:40px;
+
+    }
 
 }
