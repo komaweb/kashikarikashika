@@ -1,11 +1,5 @@
-import {
-
-    initializeHistoryView,
-    refreshHistoryView
-
-} from "./ui/historyPage.js";
-import { showPage } from "./ui/navigation.js";
 import { initializeNavigation } from "./ui/pageNavigation.js";
+import { showPage } from "./ui/navigation.js";
 
 import { updateBalance } from "./ui/balance.js";
 import { renderHistory } from "./ui/historyView.js";
@@ -106,14 +100,6 @@ export function refreshMoneyPage(){
     updateBalance();
 
     renderHistory({
-
-        target:
-
-            document.getElementById(
-
-                "historyList"
-
-            ),
 
         filter:"active",
 
