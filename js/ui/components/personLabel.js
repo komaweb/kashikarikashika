@@ -6,7 +6,15 @@ export function createPersonLabel(person){
 
         person,
 
-        "が支払いました"
+        "が支払いました",
+
+        {
+
+            layout:"row",
+
+            size:"small"
+
+        }
 
     );
 
