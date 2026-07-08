@@ -48,11 +48,43 @@ export function getDeletedHistory(){
 
 export function addHistory(history){
 
+    history.type = "payment";
+
     history.deleted = false;
 
     history.deletedAt = null;
 
+    history.createdAt = new Date().toISOString();
+
     historyData.unshift(history);
+
+    save(
+
+        STORAGE_NAME,
+
+        historyData
+
+    );
+
+}
+
+export function addSettlement(amount){
+
+    historyData.unshift({
+
+        id:crypto.randomUUID(),
+
+        type:"settlement",
+
+        amount,
+
+        deleted:false,
+
+        deletedAt:null,
+
+        createdAt:new Date().toISOString()
+
+    });
 
     save(
 
@@ -92,37 +124,15 @@ export function deleteHistory(id){
 
 }
 
-export function clearHistory(){
+export function hasActiveHistory(){
 
-    historyData.length = 0;
-
-    save(
-
-        STORAGE_NAME,
-
-        historyData
-
-    );
+    return getActiveHistory().length>0;
 
 }
 
-export function addSettlement(amount){
+export function clearHistory(){
 
-    historyData.unshift({
-
-        id:crypto.randomUUID(),
-
-        type:"settlement",
-
-        amount,
-
-        deleted:false,
-
-        deletedAt:null,
-
-        createdAt:new Date().toISOString()
-
-    });
+    historyData.length = 0;
 
     save(
 
