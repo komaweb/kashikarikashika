@@ -1,3 +1,9 @@
+import {
+
+    initializeHistoryView,
+    refreshHistoryView
+
+} from "./ui/historyPage.js";
 import { showPage } from "./ui/navigation.js";
 import { initializeNavigation } from "./ui/pageNavigation.js";
 
