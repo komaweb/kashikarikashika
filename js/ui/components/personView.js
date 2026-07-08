@@ -40,15 +40,19 @@ export function createPersonView(
 
         const icon = document.createElement("div");
 
-        icon.className = "person-icon person-placeholder";
+        icon.className =
 
-        icon.style.backgroundColor = person.color;
+            "person-icon person-placeholder";
+
+        icon.style.backgroundColor =
+
+            person.color;
 
         element.appendChild(icon);
 
     }
 
-    const name = document.createElement("span");
+    const name = document.createElement("div");
 
     name.className = "person-name";
 
