@@ -18,11 +18,11 @@ export function createPersonView(person){
 
     }else{
 
-        const icon = document.createElement("span");
+        const icon = document.createElement("div");
 
-        icon.className = "person-icon";
+        icon.className = "person-icon person-placeholder";
 
-        icon.textContent = person.icon;
+        icon.style.background = person.color;
 
         element.appendChild(icon);
 
