@@ -57,6 +57,8 @@ function initializeMoneyPage(){
 
 function initializeHistoryPage(){
 
+    refreshHistoryPage();
+
     initializeHistoryNavigation();
 
 }
@@ -77,11 +79,43 @@ function refreshMoneyPage(){
 
     updateBalance();
 
-    renderHistory(
+    renderHistory({
 
-        refreshMoneyPage
+        target:
 
-    );
+            document.getElementById(
+
+                "historyList"
+
+            ),
+
+        filter:"active",
+
+        limit:5,
+
+        refresh:refreshMoneyPage
+
+    });
+
+}
+
+function refreshHistoryPage(){
+
+    renderHistory({
+
+        target:
+
+            document.getElementById(
+
+                "historyList"
+
+            ),
+
+        filter:"active",
+
+        refresh:refreshHistoryPage
+
+    });
 
 }
 
