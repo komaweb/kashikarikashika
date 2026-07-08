@@ -28,11 +28,23 @@
 
     font-weight:700;
 
+    min-height:34px;
+
+    display:flex;
+
+    align-items:center;
+
 }
 
 .history-detail{
 
-    font-size:16px;
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    min-height:34px;
 
 }
 
@@ -111,7 +123,6 @@
     font-size:13px;
 
 }
-
 
 /*==================================================
     History Tabs
