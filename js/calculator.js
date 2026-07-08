@@ -2,39 +2,35 @@ export function calculateBalance(history){
 
     let balance = 0;
 
-    history.forEach(item=>{
+    for(const item of history){
 
         if(item.deleted){
 
-            return;
+            continue;
 
         }
 
-        switch(item.type){
+        if(item.type==="settlement"){
 
-            case "payment":
-
-                if(item.payer === "self"){
-
-                    balance += item.amount;
-
-                }else{
-
-                    balance -= item.amount;
-
-                }
-
-                break;
-
-            case "settlement":
-
-                balance = 0;
-
-                break;
+            break;
 
         }
 
-    });
+        if(item.type==="payment"){
+
+            if(item.payer==="self"){
+
+                balance += item.amount;
+
+            }else{
+
+                balance -= item.amount;
+
+            }
+
+        }
+
+    }
 
     return balance;
 
