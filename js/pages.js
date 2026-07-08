@@ -1,5 +1,6 @@
-import { initializeNavigation } from "./ui/pageNavigation.js";
 import { showPage } from "./ui/navigation.js";
+
+import { initializePage } from "./ui/pageInitializer.js";
 
 import { updateBalance } from "./ui/balance.js";
 import { renderHistory } from "./ui/historyView.js";
@@ -13,7 +14,23 @@ export async function openMoneyPage(){
 
         "money",
 
-        initializeMoneyPage
+        ()=>{
+
+            initializePage({
+
+                onInitialize:initializeMoney,
+
+                navigation:{
+
+                    history:openHistoryPage,
+
+                    settings:openSettingsPage
+
+                }
+
+            });
+
+        }
 
     );
 
@@ -25,7 +42,23 @@ export async function openHistoryPage(){
 
         "history",
 
-        initializeHistoryPage
+        ()=>{
+
+            initializePage({
+
+                onInitialize:initializeHistoryView,
+
+                navigation:{
+
+                    money:openMoneyPage,
+
+                    settings:openSettingsPage
+
+                }
+
+            });
+
+        }
 
     );
 
@@ -37,13 +70,29 @@ export async function openSettingsPage(){
 
         "settings",
 
-        initializeSettingsPage
+        ()=>{
+
+            initializePage({
+
+                onInitialize:initializeSettings,
+
+                navigation:{
+
+                    money:openMoneyPage,
+
+                    history:openHistoryPage
+
+                }
+
+            });
+
+        }
 
     );
 
 }
 
-function initializeMoneyPage(){
+function initializeMoney(){
 
     refreshMoneyPage();
 
@@ -53,45 +102,15 @@ function initializeMoneyPage(){
 
     );
 
-    initializeNavigation({
-
-        history:openHistoryPage,
-
-        settings:openSettingsPage
-
-    });
-
 }
 
-function initializeHistoryPage(){
-
-    initializeHistoryView();
-
-    initializeNavigation({
-
-        money:openMoneyPage,
-
-        settings:openSettingsPage
-
-    });
-
-}
-
-function initializeSettingsPage(){
+function initializeSettings(){
 
     initializeSettingsView(
 
         refreshMoneyPage
 
     );
-
-    initializeNavigation({
-
-        money:openMoneyPage,
-
-        history:openHistoryPage
-
-    });
 
 }
 
