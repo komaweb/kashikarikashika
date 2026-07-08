@@ -2,13 +2,29 @@ import { createText } from "./text.js";
 
 export function createHistorySubtitle(item){
 
-    if(!item.deleted){
+    if(item.deleted){
 
-        return null;
+        if(!item.title){
+
+            return null;
+
+        }
+
+        return createText({
+
+            text:item.title,
+
+            classes:["history-subtitle"]
+
+        });
 
     }
 
-    if(!item.title){
+    const subtitle =
+
+        item.subtitle;
+
+    if(!subtitle){
 
         return null;
 
@@ -16,7 +32,7 @@ export function createHistorySubtitle(item){
 
     return createText({
 
-        text:item.title,
+        text:subtitle,
 
         classes:["history-subtitle"]
 
