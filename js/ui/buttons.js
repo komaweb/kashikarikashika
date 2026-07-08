@@ -221,11 +221,9 @@ ${formatMoney(Math.abs(balance))} の貸し借りを精算済みとして記録�
 
     }
 
-    addSettlement(
-
-        Math.abs(balance)
-
-    );
+addSettlement(
+    balance
+);
 
     refresh();
 
