@@ -598,3 +598,28 @@ button{
     font-size:34px;
 
 }
+
+
+.balance-person{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:14px;
+
+}
+
+.balance-person-label{
+
+    font-size:24px;
+
+    font-weight:700;
+
+    text-align:center;
+
+}
