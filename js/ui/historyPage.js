@@ -2,7 +2,7 @@ import { renderHistory } from "./historyView.js";
 
 let currentFilter = "active";
 
-export function initializeHistoryPage(){
+export function initializeHistoryView(){
 
     initializeTabs();
 
