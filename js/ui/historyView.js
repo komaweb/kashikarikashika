@@ -1,6 +1,7 @@
 import {
 
-    getHistory
+    getHistory,
+    deleteHistory
 
 } from "../historyStore.js";
 
@@ -76,7 +77,9 @@ export function renderHistory({
 
                 item,
 
-                ()=>{
+                id=>{
+
+                    deleteHistory(id);
 
                     refresh();
 
