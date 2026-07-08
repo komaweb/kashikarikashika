@@ -34,6 +34,13 @@ export const settings = load(
 
 );
 
+// 古いデータとの互換性
+settings.self.image ??= null;
+settings.partner.image ??= null;
+
+settings.self.color ??= "#4F8EF7";
+settings.partner.color ??= "#FF6B81";
+
 applyThemeColors();
 
 export function saveSettings(){
