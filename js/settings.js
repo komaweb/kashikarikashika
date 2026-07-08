@@ -4,30 +4,25 @@ const STORAGE_NAME = "settings";
 
 const defaultSettings = {
 
-    self:{
+ self:{
 
-        name:"自分",
+    name:"自分",
 
-        icon:"😳",
+    image:null,
 
-        image:null,
+    color:"#4F8EF7"
 
-        color:"#4F8EF7"
+},
 
-    },
+partner:{
 
-    partner:{
+    name:"相手",
 
-        name:"相手",
+    image:null,
 
-        icon:"🐱",
+    color:"#FF6B81"
 
-        image:null,
-
-        color:"#FF6B81"
-
-    }
-
+}
 };
 
 export const settings = load(
