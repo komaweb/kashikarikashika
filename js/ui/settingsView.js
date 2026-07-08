@@ -52,14 +52,8 @@ function loadSettings(elements){
     elements.selfName.value =
         settings.self.name;
 
-    elements.selfIcon.value =
-        settings.self.icon;
-
     elements.partnerName.value =
         settings.partner.name;
-
-    elements.partnerIcon.value =
-        settings.partner.icon;
 
 }
 
@@ -70,20 +64,14 @@ function saveSettings(elements){
         self:{
 
             name:
-                elements.selfName.value.trim() || "自分",
-
-            icon:
-                elements.selfIcon.value.trim() || "😳"
+                elements.selfName.value.trim() || "自分"
 
         },
 
         partner:{
 
             name:
-                elements.partnerName.value.trim() || "相手",
-
-            icon:
-                elements.partnerIcon.value.trim() || "🐱"
+                elements.partnerName.value.trim() || "相手"
 
         }
 
