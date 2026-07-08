@@ -4,6 +4,8 @@ let currentFilter = "active";
 
 export function initializeHistoryView(){
 
+    currentFilter = "active";
+
     initializeTabs();
 
     refreshHistoryView();
@@ -13,14 +15,6 @@ export function initializeHistoryView(){
 export function refreshHistoryView(){
 
     renderHistory({
-
-        target:
-
-            document.getElementById(
-
-                "historyList"
-
-            ),
 
         filter:currentFilter,
 
@@ -96,7 +90,7 @@ function bindTab(
 
 function updateTabs(){
 
-    updateTab(
+    setTabActive(
 
         "historyActiveTab",
 
@@ -104,7 +98,7 @@ function updateTabs(){
 
     );
 
-    updateTab(
+    setTabActive(
 
         "historyDeletedTab",
 
@@ -114,7 +108,7 @@ function updateTabs(){
 
 }
 
-function updateTab(
+function setTabActive(
 
     id,
 
