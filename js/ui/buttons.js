@@ -1,9 +1,6 @@
 import {
     addHistory,
-    addSettlement
-} from "../historyStore.js";
-
-import {
+    addSettlement,
     getHistory
 } from "../historyStore.js";
 
@@ -13,7 +10,15 @@ import {
 
 import { formatMoney } from "./format.js";
 
+import { settings } from "../settings.js";
+
+import { createPaymentButton }
+
+    from "./components/paymentButton.js";
+
 export function initializeButtons(refresh){
+
+    initializePaymentButtons();
 
     bindPaymentButton(
 
@@ -38,6 +43,34 @@ export function initializeButtons(refresh){
     bindSettlementButton(
 
         refresh
+
+    );
+
+}
+
+function initializePaymentButtons(){
+
+    createPaymentButton(
+
+        document.getElementById(
+
+            "selfButton"
+
+        ),
+
+        settings.self
+
+    );
+
+    createPaymentButton(
+
+        document.getElementById(
+
+            "partnerButton"
+
+        ),
+
+        settings.partner
 
     );
 
@@ -221,9 +254,11 @@ ${formatMoney(Math.abs(balance))} の貸し借りを精算済みとして記録�
 
     }
 
-addSettlement(
-    balance
-);
+    addSettlement(
+
+        balance
+
+    );
 
     refresh();
 
