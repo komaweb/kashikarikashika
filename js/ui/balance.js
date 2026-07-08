@@ -11,23 +11,9 @@ import { settings } from "../settings.js";
 
 import { formatMoney } from "./format.js";
 
+import { updateBalancePerson } from "./components/balancePerson.js";
+
 export function updateBalance(){
-
-    document.documentElement.style.setProperty(
-
-        "--self-color",
-
-        settings.self.color
-
-    );
-
-    document.documentElement.style.setProperty(
-
-        "--partner-color",
-
-        settings.partner.color
-
-    );
 
     const balance = calculateBalance(
 
@@ -79,9 +65,15 @@ export function updateBalance(){
 
         case "self":
 
-            balanceText.textContent =
+            updateBalancePerson(
 
-                `${settings.partner.icon} ${settings.partner.name}が借りています`;
+                balanceText,
+
+                settings.partner,
+
+                "が借りています"
+
+            );
 
             balanceAmount.textContent =
 
@@ -97,9 +89,15 @@ export function updateBalance(){
 
         case "partner":
 
-            balanceText.textContent =
+            updateBalancePerson(
 
-                `${settings.self.icon} ${settings.self.name}が借りています`;
+                balanceText,
+
+                settings.self,
+
+                "が借りています"
+
+            );
 
             balanceAmount.textContent =
 
