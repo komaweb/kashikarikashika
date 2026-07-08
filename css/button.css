@@ -165,3 +165,14 @@
     transform:scale(.98);
 
 }
+
+
+
+.header-logo,
+.settlement-logo{
+
+    width:260px;
+
+    height:auto;
+
+}
