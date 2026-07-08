@@ -1,40 +1,102 @@
-.history-section h2{
+/*==================================================
+    History
+==================================================*/
 
-    font-size:22px;
+.history-section{
+
+    margin-top:24px;
+
+}
+
+.history-section h2{
 
     margin-bottom:16px;
 
+    font-size:22px;
+
+    font-weight:800;
+
 }
+
+/*==================================================
+    History Card
+==================================================*/
 
 .history-card{
 
-    margin-bottom:12px;
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+    margin-bottom:16px;
+
+    padding:18px;
+
+    background:#fff;
+
+    border:1px solid var(--border);
+
+    border-radius:18px;
+
+    box-shadow:var(--shadow);
 
 }
+
+.history-card-deleted{
+
+    opacity:.75;
+
+}
+
+/*==================================================
+    Date
+==================================================*/
 
 .history-date{
 
-    color:var(--sub);
-
     font-size:13px;
+
+    color:var(--sub);
 
 }
 
+/*==================================================
+    Title
+==================================================*/
+
 .history-title{
-
-    margin:8px 0;
-
-    font-size:20px;
-
-    font-weight:700;
-
-    min-height:34px;
 
     display:flex;
 
     align-items:center;
 
+    min-height:32px;
+
+    font-size:22px;
+
+    font-weight:700;
+
 }
+
+.history-subtitle{
+
+    color:var(--sub);
+
+    font-size:15px;
+
+}
+
+.deleted-title{
+
+    color:var(--danger);
+
+}
+
+/*==================================================
+    Person
+==================================================*/
 
 .history-detail{
 
@@ -44,23 +106,11 @@
 
     gap:10px;
 
-    min-height:36px;
+    min-height:32px;
 
 }
 
-.history-person-icon{
-
-    width:30px;
-
-    height:30px;
-
-    border-radius:50%;
-
-    object-fit:cover;
-
-    flex-shrink:0;
-
-}
+.history-person-icon,
 
 .history-person-placeholder{
 
@@ -70,17 +120,25 @@
 
     border-radius:50%;
 
-    background:var(--self-color);
+    flex-shrink:0;
+
+}
+
+.history-person-icon{
+
+    object-fit:cover;
+
+}
+
+.history-person-placeholder{
 
     border:2px solid rgba(255,255,255,.35);
-
-    flex-shrink:0;
 
 }
 
 .history-person-text{
 
-    font-size:18px;
+    font-size:17px;
 
     font-weight:600;
 
@@ -89,45 +147,63 @@
 }
 
 /*==================================================
-    History Tabs
+    Money
 ==================================================*/
 
-.history-tabs{
+.history-money{
 
-    display:flex;
+    font-size:30px;
 
-    gap:12px;
+    font-weight:800;
 
 }
 
-.history-tab{
+/*==================================================
+    Deleted
+==================================================*/
 
-    flex:1;
+.history-delete-info{
 
-    padding:14px;
-
-    border:1px solid var(--border);
-
-    border-radius:16px;
-
-    background:white;
+    font-size:14px;
 
     color:var(--sub);
 
-    font-size:16px;
+}
 
-    font-weight:700;
+/*==================================================
+    Delete Button
+==================================================*/
 
-    transition:var(--transition);
+.history-delete-button{
+
+    margin-top:4px;
 
 }
 
-.history-tab.active{
+.history-delete-button .button-danger{
 
-    background:var(--self);
+    width:100%;
 
-    color:white;
+}
 
-    border-color:var(--self);
+/*==================================================
+    Settlement
+==================================================*/
+
+.settlement-card{
+
+    border-left:5px solid #22c55e;
+
+}
+
+.settlement-card .history-title{
+
+    color:#16a34a;
+
+}
+
+.settlement-card .history-money{
+
+    color:#16a34a;
 
 }
