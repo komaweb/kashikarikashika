@@ -1,10 +1,9 @@
 <header>
 
-    <h1>
-
-        カシカリカシカ
-
-    </h1>
+    <img
+        src="kashikari.PNG"
+        alt="カシカリカシカ"
+        class="header-logo">
 
 </header>
 
@@ -39,17 +38,34 @@
 
         <div class="form-group">
 
-            <label for="selfIcon">
+            <label>
 
-                アイコン（絵文字）
+                アイコン
 
             </label>
 
-            <input
-                id="selfIcon"
-                type="text"
-                maxlength="2"
-                placeholder="😳">
+            <div class="icon-setting">
+
+                <img
+                    id="selfIconPreview"
+                    class="settings-icon-preview">
+
+                <input
+                    id="selfIcon"
+                    type="file"
+                    accept="image/*"
+                    hidden>
+
+                <button
+                    id="selfIconButton"
+                    class="button button-self"
+                    type="button">
+
+                    画像を選択
+
+                </button>
+
+            </div>
 
         </div>
 
@@ -84,17 +100,34 @@
 
         <div class="form-group">
 
-            <label for="partnerIcon">
+            <label>
 
-                アイコン（絵文字）
+                アイコン
 
             </label>
 
-            <input
-                id="partnerIcon"
-                type="text"
-                maxlength="2"
-                placeholder="🐱">
+            <div class="icon-setting">
+
+                <img
+                    id="partnerIconPreview"
+                    class="settings-icon-preview">
+
+                <input
+                    id="partnerIcon"
+                    type="file"
+                    accept="image/*"
+                    hidden>
+
+                <button
+                    id="partnerIconButton"
+                    class="button button-partner"
+                    type="button">
+
+                    画像を選択
+
+                </button>
+
+            </div>
 
         </div>
 
@@ -118,18 +151,16 @@
 
 </main>
 
-
 <nav class="bottom-navigation">
 
     <button
         id="moneyTab"
         class="nav-button">
 
-        <span class="nav-icon">
-
-            🏠
-
-        </span>
+        <img
+            src="kashi.PNG"
+            alt="貸し借り"
+            class="nav-icon-image">
 
         <span class="nav-label">
 
@@ -143,11 +174,10 @@
         id="historyTab"
         class="nav-button">
 
-        <span class="nav-icon">
-
-            📊
-
-        </span>
+        <img
+            src="rireki.PNG"
+            alt="履歴"
+            class="nav-icon-image">
 
         <span class="nav-label">
 
@@ -161,11 +191,10 @@
         id="settingsTab"
         class="nav-button active">
 
-        <span class="nav-icon">
-
-            ⚙️
-
-        </span>
+        <img
+            src="settei.PNG"
+            alt="設定"
+            class="nav-icon-image">
 
         <span class="nav-label">
 
